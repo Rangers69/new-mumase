@@ -49,6 +49,8 @@ class Welcome extends CI_Controller {
 		$data['pimpinan'] = $this->Pimpinan->get_all();
 
 
-		$this->load->view('admin/index', $data);
+		$this->load->view('public/header', $data);
+		$this->load->view('public/index', $data);
+		$this->load->view('public/footer', $data);
 	}
 }
