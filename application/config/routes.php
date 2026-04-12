@@ -52,3 +52,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+// Authentication routes
+$route['auth'] = 'auth';
+$route['auth/login'] = 'auth/login_process';
+
+// Admin routes
+$route['admin'] = 'admin';
+$route['admin/dashboard'] = 'admin/dashboard';
+$route['admin/login'] = 'auth';
+
+
+// Guru Management Routes - User Friendly URLs
+$route['guru'] = 'GuruController';
+// $route['guru/daftar'] = 'GuruController/index';
+// $route['guru/tambah'] = 'GuruController/tambah';
+// $route['guru/(:num)'] = 'GuruController/detail/$1';
+// $route['guru/edit/(:num)'] = 'GuruController/edit/$1';
+// $route['guru/hapus/(:num)'] = 'GuruController/hapus/$1';
+// $route['guru/simpan'] = 'GuruController/proses_tambah';
+// $route['guru/update'] = 'GuruController/proses_edit';
+

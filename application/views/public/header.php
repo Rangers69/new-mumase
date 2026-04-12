@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>Home - SMK Muh 15</title>
+  <title><?php echo isset($title) ? $title : 'SMK Muhammadiyah 15 Jakarta'; ?></title>
   <meta content="" name="description" />
   <meta content="" name="keywords" />
 
