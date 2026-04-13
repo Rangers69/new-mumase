@@ -10,8 +10,8 @@
   <meta content="" name="keywords" />
 
   <!-- Favicons -->
-  <link href="assets/img/logo-smk.png" rel="icon" />
-  <link href="assets/img/logo-smk.png" rel="apple-touch-icon" />
+  <link href="<?php echo base_url('assets/img/logo-smk.png'); ?>" rel="icon" />
+  <link href="<?php echo base_url('assets/img/logo-smk.png'); ?>" rel="apple-touch-icon" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,14 +19,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" />
+  <link href="<?php echo base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css'); ?>" rel="stylesheet" />
+  <link href="<?php echo base_url('assets/vendor/aos/aos.css'); ?>" rel="stylesheet" />
+  <link href="<?php echo base_url('assets/vendor/glightbox/css/glightbox.min.css'); ?>" rel="stylesheet" />
+  <link href="<?php echo base_url('assets/vendor/swiper/swiper-bundle.min.css'); ?>" rel="stylesheet" />
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet" />
+  <link href="<?php echo base_url('assets/css/main.css'); ?>" rel="stylesheet" />
 </head>
 
 <body>
@@ -56,16 +56,16 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Home</a></li>
+          <li><a href="<?php echo base_url(); ?>">Home</a></li>
           <li class="dropdown">
-            <a href="#"><span>Tentang Kami</span>
+            <a href="<?php echo base_url(); ?>#about"><span>Tentang Kami</span>
               <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="#about">Visi & Misi</a></li>
-              <li><a href="#partnership">Partnership</a></li>
-              <li><a href="#statistik">Statistik Sekolah</a></li>
-              <li><a href="#sarpras">Sarana Prasarana</a></li>
-              <li><a href="#guru">Guru</a></li>
+              <li><a href="<?php echo base_url(); ?>#about">Visi & Misi</a></li>
+              <li><a href="<?php echo base_url(); ?>#partnership">Partnership</a></li>
+              <li><a href="<?php echo base_url(); ?>#statistik">Statistik Sekolah</a></li>
+              <li><a href="<?php echo base_url(); ?>#sarpras">Sarana Prasarana</a></li>
+              <li><a href="<?php echo base_url('guru/public'); ?>">Guru</a></li>
             </ul>
           </li>
           <li><a href="#program">Program Unggulan</a></li>

@@ -9,6 +9,7 @@ class GuruController extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('session');
+        $this->load->model('Guru');
     }
 
     // Halaman utama guru - menampilkan daftar guru
@@ -190,6 +191,17 @@ class GuruController extends CI_Controller {
         }
         
         redirect('guru/inactive');
+    }
+
+    // Halaman publik guru - dapat diakses oleh umum
+    public function public_view()
+    {
+        $data['guru'] = $this->Guru->get_all();
+        $data['title'] = 'Data Guru - SMK Muhammadiyah 15 Jakarta';
+        
+        $this->load->view('public/header', $data);
+        $this->load->view('public/guru', $data);
+        $this->load->view('public/footer', $data);
     }
 
     // Upload foto guru

@@ -29,6 +29,12 @@ class Admin extends CI_Controller {
         $data['title'] = 'Dashboard - SMK Muhammadiyah 15 Jakarta';
         $data['user'] = $this->session->userdata();
         
+        // Load dashboard model
+        $this->load->model('Dashboard');
+        
+        // Get dashboard statistics
+        $data['stats'] = $this->Dashboard->get_dashboard_stats();
+        
         $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
         $this->load->view('admin/footer', $data);
