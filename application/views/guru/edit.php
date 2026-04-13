@@ -149,11 +149,11 @@
                     <span class="input-group-text">
                       <i class="bi bi-telephone"></i>
                     </span>
-                    <input type="tel" class="form-control" name="telepon" id="telepon" 
+                    <input type="tel" class="form-control" name="no_hp" id="no_hp" 
                            placeholder="0812-3456-7890" required 
-                           value="<?php echo set_value('telepon', $guru->telepon); ?>">
+                           value="<?php echo set_value('no_hp', $guru->no_hp); ?>">
                   </div>
-                  <?php echo form_error('telepon', '<div class="text-danger small mt-1">', '</div>'); ?>
+                  <?php echo form_error('no_hp', '<div class="text-danger small mt-1">', '</div>'); ?>
                 </div>
               </div>
             </div>

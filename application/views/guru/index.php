@@ -57,7 +57,7 @@
                   >
 
                   <h5 class="card-title mb-1"><?php echo $row->nama_guru; ?></h5>
-                  <p class="text-primary fw-semibold mb-2"><?php echo $row->mapel_guru; ?></p>
+                  <p class="text-primary fw-semibold mb-2"><?php echo $row->nama_mapel; ?></p>
 
                   <div class="text-muted small mb-3">
                     <div><strong>Hobi:</strong> <?php echo !empty($row->hobi) ? $row->hobi : '-'; ?></div>

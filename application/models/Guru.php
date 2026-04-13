@@ -12,9 +12,30 @@ class Guru extends CI_Model {
     // Get all guru records
     public function get_all()
     {
-        $this->db->where('active', 1);
-        $this->db->order_by('nama_guru', 'ASC');
-        return $this->db->get('tb_guru')->result();
+        $this->db->select("
+            tb_guru.id_guru,
+            tb_guru.nama_guru,
+            tb_guru.foto_guru,
+            tb_guru.hobi,
+            tb_guru.tanggal_bergabung,
+            tb_guru.active,
+            GROUP_CONCAT(DISTINCT tb_mapel.nama_mapel ORDER BY tb_mapel.nama_mapel ASC SEPARATOR ', ') AS nama_mapel
+        ");
+        $this->db->from('tb_guru');
+        $this->db->join('tb_guru_mapel', 'tb_guru_mapel.id_guru = tb_guru.id_guru', 'left');
+        $this->db->join('tb_mapel', 'tb_mapel.id_mapel = tb_guru_mapel.id_mapel', 'left');
+        $this->db->where('tb_guru.active', 1);
+        $this->db->group_by(array(
+            'tb_guru.id_guru',
+            'tb_guru.nama_guru',
+            'tb_guru.foto_guru',
+            'tb_guru.hobi',
+            'tb_guru.tanggal_bergabung',
+            'tb_guru.active'
+        ));
+        $this->db->order_by('tb_guru.nama_guru', 'ASC');
+
+        return $this->db->get()->result();
     }
 
     // Get guru by ID
