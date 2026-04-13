@@ -55,7 +55,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Authentication routes
 $route['auth'] = 'auth';
-$route['auth/login'] = 'auth/login_process';
 
 // Admin routes
 $route['admin'] = 'admin';
@@ -119,4 +118,13 @@ $route['partnership/tambah'] = 'PartnershipController/tambah';
 $route['partnership/insert'] = 'PartnershipController/insert';
 $route['partnership/update'] = 'PartnershipController/update';
 $route['partnership/delete/(:num)'] = 'PartnershipController/delete/$1';
+
+// Routes untuk Jurusan
+$route['jurusan'] = 'JurusanController';
+$route['jurusan/detail/(:num)'] = 'JurusanController/detail/$1';
+$route['jurusan/edit/(:num)'] = 'JurusanController/edit/$1';
+$route['jurusan/tambah'] = 'JurusanController/tambah';
+$route['jurusan/insert'] = 'JurusanController/insert';
+$route['jurusan/update'] = 'JurusanController/update';
+$route['jurusan/delete/(:num)'] = 'JurusanController/delete/$1';
 

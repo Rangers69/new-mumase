@@ -169,6 +169,27 @@ function is_active_group($segments = []) {
       </li>
 
       <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('program') ? 'active' : ''; ?>" href="<?php echo base_url('program'); ?>">
+          <i class="bi bi-book"></i>
+          <span>Program</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('jurusan') ? 'active' : ''; ?>" href="<?php echo base_url('jurusan'); ?>">
+          <i class="bi bi-mortarboard"></i>
+          <span>Jurusan</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('sarpras') ? 'active' : ''; ?>" href="<?php echo base_url('sarpras'); ?>">
+          <i class="bi bi-building"></i>
+          <span>Sarana Prasarana</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link <?php echo is_active_page('partnership') ? 'active' : ''; ?>" href="<?php echo base_url('partnership'); ?>">
           <i class="bi bi-link-45deg"></i>
           <span>Partnership</span>
