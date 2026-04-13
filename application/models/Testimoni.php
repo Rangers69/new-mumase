@@ -18,7 +18,7 @@ class Testimoni extends CI_Model {
     // Get testimoni by ID
     public function get_by_id($id)
     {
-        return $this->db->get_where('tb_testimoni', ['id_testimoni' => $id])->row();
+        return $this->db->get_where('tb_testimoni', ['id_alumni' => $id])->row();
     }
 
     // Insert new testimoni
@@ -30,14 +30,14 @@ class Testimoni extends CI_Model {
     // Update testimoni
     public function update($id, $data)
     {
-        $this->db->where('id_testimoni', $id);
+        $this->db->where('id_alumni', $id);
         return $this->db->update('tb_testimoni', $data);
     }
 
     // Delete testimoni
     public function delete($id)
     {
-        $this->db->where('id_testimoni', $id);
+        $this->db->where('id_alumni', $id);
         return $this->db->delete('tb_testimoni');
     }
 
@@ -53,11 +53,6 @@ class Testimoni extends CI_Model {
         return $this->db->get('tb_testimoni', $limit, $offset)->result();
     }
 
-    // Get active testimoni only
-    public function get_active()
-    {
-        return $this->db->get_where('tb_testimoni', ['active' => 1])->result();
-    }
 
     // Get testimoni ordered by name
     public function get_ordered_by_name($order = 'ASC')

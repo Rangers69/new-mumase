@@ -102,3 +102,12 @@ $route['sarpras/insert'] = 'SarprasController/insert';
 $route['sarpras/update'] = 'SarprasController/update';
 $route['sarpras/delete/(:num)'] = 'SarprasController/delete/$1';
 
+// Routes untuk Testimoni
+$route['testimoni'] = 'TestimoniController';
+$route['testimoni/detail/(:num)'] = 'TestimoniController/detail/$1';
+$route['testimoni/edit/(:num)'] = 'TestimoniController/edit/$1';
+$route['testimoni/tambah'] = 'TestimoniController/tambah';
+$route['testimoni/insert'] = 'TestimoniController/insert';
+$route['testimoni/update'] = 'TestimoniController/update';
+$route['testimoni/delete/(:num)'] = 'TestimoniController/delete/$1';
+
