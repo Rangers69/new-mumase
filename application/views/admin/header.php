@@ -169,6 +169,13 @@ function is_active_group($segments = []) {
       </li>
 
       <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('partnership') ? 'active' : ''; ?>" href="<?php echo base_url('partnership'); ?>">
+          <i class="bi bi-link-45deg"></i>
+          <span>Partnership</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link <?php echo is_active_page('statistik') ? 'active' : ''; ?>" href="<?php echo base_url('statistik'); ?>">
           <i class="bi bi-bar-chart"></i>
           <span>Statistik</span>

@@ -111,3 +111,12 @@ $route['testimoni/insert'] = 'TestimoniController/insert';
 $route['testimoni/update'] = 'TestimoniController/update';
 $route['testimoni/delete/(:num)'] = 'TestimoniController/delete/$1';
 
+// Routes untuk Partnership
+$route['partnership'] = 'PartnershipController';
+$route['partnership/detail/(:num)'] = 'PartnershipController/detail/$1';
+$route['partnership/edit/(:num)'] = 'PartnershipController/edit/$1';
+$route['partnership/tambah'] = 'PartnershipController/tambah';
+$route['partnership/insert'] = 'PartnershipController/insert';
+$route['partnership/update'] = 'PartnershipController/update';
+$route['partnership/delete/(:num)'] = 'PartnershipController/delete/$1';
+
