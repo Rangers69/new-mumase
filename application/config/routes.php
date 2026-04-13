@@ -128,3 +128,12 @@ $route['jurusan/insert'] = 'JurusanController/insert';
 $route['jurusan/update'] = 'JurusanController/update';
 $route['jurusan/delete/(:num)'] = 'JurusanController/delete/$1';
 
+// Routes untuk Pimpinan
+$route['pimpinan'] = 'PimpinanController';
+$route['pimpinan/detail/(:num)'] = 'PimpinanController/detail/$1';
+$route['pimpinan/edit/(:num)'] = 'PimpinanController/edit/$1';
+$route['pimpinan/tambah'] = 'PimpinanController/tambah';
+$route['pimpinan/insert'] = 'PimpinanController/insert';
+$route['pimpinan/update'] = 'PimpinanController/update';
+$route['pimpinan/delete/(:num)'] = 'PimpinanController/delete/$1';
+
