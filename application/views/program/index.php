@@ -49,15 +49,27 @@
             <div class="col-xxl-3 col-xl-4 col-md-6">
               <div class="card h-100 shadow-sm border-0">
                 <div class="card-body">
-                  <h5 class="card-title"><?php echo $row->nama_program; ?></h5>
+                  <div class="d-flex align-items-center mb-3">
+                    <?php if (!empty($row->icon_program)): ?>
+                      <i class="<?php echo $row->icon_program; ?> me-2" style="font-size: 1.5rem;"></i>
+                    <?php else: ?>
+                      <i class="bi bi-book me-2" style="font-size: 1.5rem;"></i>
+                    <?php endif; ?>
+                    <h5 class="card-title mb-0"><?php echo $row->nama_program; ?></h5>
+                  </div>
                   <p class="card-text"><?php echo character_limiter($row->deskripsi_program, 100); ?></p>
                   <div class="d-flex justify-content-between align-items-center">
                     <a href="<?php echo base_url('program/detail/'.$row->id_program); ?>" class="btn btn-sm btn-outline-primary">
                       <i class="bi bi-eye"></i> Detail
                     </a>
-                    <a href="<?php echo base_url('program/edit/'.$row->id_program); ?>" class="btn btn-sm btn-outline-warning">
-                      <i class="bi bi-pencil"></i> Edit
-                    </a>
+                    <div class="btn-group" role="group">
+                      <a href="<?php echo base_url('program/edit/'.$row->id_program); ?>" class="btn btn-sm btn-outline-warning">
+                        <i class="bi bi-pencil"></i> Edit
+                      </a>
+                      <a href="<?php echo base_url('program/delete/'.$row->id_program); ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus program ini?')">
+                        <i class="bi bi-trash"></i> Hapus
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -84,3 +84,12 @@ $route['program/insert'] = 'ProgramController/insert';
 $route['program/update'] = 'ProgramController/update';
 $route['program/delete/(:num)'] = 'ProgramController/delete/$1';
 
+// Routes untuk Statistik
+$route['statistik'] = 'StatistikController';
+$route['statistik/detail/(:num)'] = 'StatistikController/detail/$1';
+$route['statistik/edit/(:num)'] = 'StatistikController/edit/$1';
+$route['statistik/tambah'] = 'StatistikController/tambah';
+$route['statistik/insert'] = 'StatistikController/insert';
+$route['statistik/update'] = 'StatistikController/update';
+$route['statistik/delete/(:num)'] = 'StatistikController/delete/$1';
+

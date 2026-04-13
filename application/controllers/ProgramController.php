@@ -11,6 +11,7 @@ class ProgramController extends CI_Controller {
         $this->load->helper('text');
         $this->load->library('session');
         $this->load->model('Program');
+        $this->load->library('form_validation');
     }
 
     // Halaman utama program - menampilkan daftar program
@@ -80,8 +81,8 @@ class ProgramController extends CI_Controller {
         } else {
             $data = array(
                 'nama_program' => $this->input->post('nama_program'),
-                'deskripsi' => $this->input->post('deskripsi'),
-                'created_at' => date('Y-m-d H:i:s')
+                'deskripsi_program' => $this->input->post('deskripsi'),
+                'icon_program' => $this->input->post('icon_program') ?? '',
             );
             
             $this->Program->insert($data);
@@ -104,8 +105,8 @@ class ProgramController extends CI_Controller {
         } else {
             $data = array(
                 'nama_program' => $this->input->post('nama_program'),
-                'deskripsi' => $this->input->post('deskripsi'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'deskripsi_program' => $this->input->post('deskripsi'),
+                'icon_program' => $this->input->post('icon_program') ?? '',
             );
             
             $this->Program->update($id, $data);

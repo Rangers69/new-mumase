@@ -49,14 +49,46 @@
           </div>
         </div>
 
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <label for="icon_program" class="form-label">Icon Program</label>
+            <select class="form-select" id="icon_program" name="icon_program">
+              <option value="">-- Pilih Icon --</option>
+              <option value="bi-cpu" <?php echo ($program->icon_program == 'bi-cpu') ? 'selected' : ''; ?>>CPU</option>
+              <option value="bi-code-slash" <?php echo ($program->icon_program == 'bi-code-slash') ? 'selected' : ''; ?>>Programming</option>
+              <option value="bi-database" <?php echo ($program->icon_program == 'bi-database') ? 'selected' : ''; ?>>Database</option>
+              <option value="bi-globe" <?php echo ($program->icon_program == 'bi-globe') ? 'selected' : ''; ?>>Web</option>
+              <option value="bi-phone" <?php echo ($program->icon_program == 'bi-phone') ? 'selected' : ''; ?>>Mobile</option>
+              <option value="bi-shield-check" <?php echo ($program->icon_program == 'bi-shield-check') ? 'selected' : ''; ?>>Security</option>
+              <option value="bi-graph-up" <?php echo ($program->icon_program == 'bi-graph-up') ? 'selected' : ''; ?>>Analytics</option>
+              <option value="bi-palette" <?php echo ($program->icon_program == 'bi-palette') ? 'selected' : ''; ?>>Design</option>
+              <option value="bi-easel" <?php echo ($program->icon_program == 'bi-easel') ? 'selected' : ''; ?>>Art</option>
+              <option value="bi-camera" <?php echo ($program->icon_program == 'bi-camera') ? 'selected' : ''; ?>>Photography</option>
+              <option value="bi-music-note" <?php echo ($program->icon_program == 'bi-music-note') ? 'selected' : ''; ?>>Music</option>
+              <option value="bi-film" <?php echo ($program->icon_program == 'bi-film') ? 'selected' : ''; ?>>Video</option>
+              <option value="bi-book" <?php echo ($program->icon_program == 'bi-book') ? 'selected' : ''; ?>>Literature</option>
+              <option value="bi-calculator" <?php echo ($program->icon_program == 'bi-calculator') ? 'selected' : ''; ?>>Accounting</option>
+              <option value="bi-cash" <?php echo ($program->icon_program == 'bi-cash') ? 'selected' : ''; ?>>Finance</option>
+              <option value="bi-shop" <?php echo ($program->icon_program == 'bi-shop') ? 'selected' : ''; ?>>Business</option>
+              <option value="bi-heart-pulse" <?php echo ($program->icon_program == 'bi-heart-pulse') ? 'selected' : ''; ?>>Health</option>
+              <option value="bi-people" <?php echo ($program->icon_program == 'bi-people') ? 'selected' : ''; ?>>Social</option>
+              <option value="bi-gear" <?php echo ($program->icon_program == 'bi-gear') ? 'selected' : ''; ?>>Engineering</option>
+              <option value="bi-tools" <?php echo ($program->icon_program == 'bi-tools') ? 'selected' : ''; ?>>Technical</option>
+              <option value="bi-lightbulb" <?php echo ($program->icon_program == 'bi-lightbulb') ? 'selected' : ''; ?>>Innovation</option>
+            </select>
+            <small class="text-muted">Pilih icon yang merepresentasikan program keahlian ini</small>
+          </div>
+        </div>
         <div class="row">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary">
-              <i class="bi bi-save"></i> Update Program
-            </button>
-            <a href="<?php echo base_url('program'); ?>" class="btn btn-secondary">
-              <i class="bi bi-x-circle"></i> Batal
-            </a>
+            <div class="btn-group" role="group">
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i> Update Program
+              </button>
+              <a href="<?php echo base_url('program'); ?>" class="btn btn-secondary">
+                <i class="bi bi-x-circle"></i> Batal
+              </a>
+            </div>
           </div>
         </div>
 

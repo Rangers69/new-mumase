@@ -155,10 +155,17 @@ function is_active_group($segments = []) {
       </li>
 
       <li class="nav-item">
-        <a class="nav-link <?php echo is_active_page('laporan') ? 'active' : ''; ?>" href="#">
-          <i class="bi bi-file-text"></i>
-          <span>Laporan</span>
+        <a class="nav-link collapsed <?php echo is_active_group(['statistik']) ? 'active' : ''; ?>" data-bs-target="#laporan-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-file-text"></i><span>Laporan</span>
+          <i class="bi bi-chevron-down ms-auto"></i>
         </a>
+        <ul id="laporan-nav" class="nav-content collapse <?php echo is_active_group(['statistik']) ? 'show' : ''; ?>" data-bs-parent="#sidebar-nav">
+          <li>
+            <a class="nav-link <?php echo is_active_page('statistik') ? 'active' : ''; ?>" href="<?php echo base_url('statistik'); ?>">
+              <i class="bi bi-bar-chart"></i><span>Statistik</span>
+            </a>
+          </li>
+        </ul>
       </li>
 
       <li class="nav-item">

@@ -18,7 +18,14 @@
       
       <div class="row">
         <div class="col-lg-8">
-          <h4 class="card-title mb-3"><?php echo $program->nama_program; ?></h4>
+          <div class="d-flex align-items-center mb-3">
+            <?php if (!empty($program->icon_program)): ?>
+              <i class="<?php echo $program->icon_program; ?> me-3" style="font-size: 2rem;"></i>
+            <?php else: ?>
+              <i class="bi bi-book me-3" style="font-size: 2rem;"></i>
+            <?php endif; ?>
+            <h4 class="card-title mb-0"><?php echo $program->nama_program; ?></h4>
+          </div>
           <p class="card-text"><?php echo nl2br($program->deskripsi_program); ?></p>
           
           <div class="mt-4">
