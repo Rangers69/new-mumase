@@ -125,6 +125,13 @@ function is_active_group($segments = []) {
       </li>
 
       <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('program') ? 'active' : ''; ?>" href="<?php echo base_url('program'); ?>">
+          <i class="bi bi-book"></i>
+          <span>Program</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Akademik</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>

@@ -75,3 +75,12 @@ $route['guru/simpan'] = 'GuruController/proses_tambah';
 $route['guru/update'] = 'GuruController/proses_edit';
 $route['guru/inactive'] = 'GuruController/inactive';
 
+// Routes untuk Program
+$route['program'] = 'ProgramController';
+$route['program/detail/(:num)'] = 'ProgramController/detail/$1';
+$route['program/edit/(:num)'] = 'ProgramController/edit/$1';
+$route['program/tambah'] = 'ProgramController/tambah';
+$route['program/insert'] = 'ProgramController/insert';
+$route['program/update'] = 'ProgramController/update';
+$route['program/delete/(:num)'] = 'ProgramController/delete/$1';
+
