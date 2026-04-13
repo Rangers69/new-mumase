@@ -93,3 +93,12 @@ $route['statistik/insert'] = 'StatistikController/insert';
 $route['statistik/update'] = 'StatistikController/update';
 $route['statistik/delete/(:num)'] = 'StatistikController/delete/$1';
 
+// Routes untuk Sarana Prasarana
+$route['sarpras'] = 'SarprasController';
+$route['sarpras/detail/(:num)'] = 'SarprasController/detail/$1';
+$route['sarpras/edit/(:num)'] = 'SarprasController/edit/$1';
+$route['sarpras/tambah'] = 'SarprasController/tambah';
+$route['sarpras/insert'] = 'SarprasController/insert';
+$route['sarpras/update'] = 'SarprasController/update';
+$route['sarpras/delete/(:num)'] = 'SarprasController/delete/$1';
+

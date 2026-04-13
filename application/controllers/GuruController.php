@@ -195,7 +195,6 @@ class GuruController extends CI_Controller {
     // Upload foto guru
     private function upload_foto()
     {
-        // Create upload directory if it doesn't exist
         $upload_path = './assets/img/guru/';
         if (!is_dir($upload_path)) {
             mkdir($upload_path, 0755, true);
@@ -213,7 +212,6 @@ class GuruController extends CI_Controller {
             $upload_data = $this->upload->data();
             return $upload_data['file_name'];
         } else {
-            // Log error for debugging
             error_log('Upload error: ' . $this->upload->display_errors());
             return 'default.jpg';
         }
