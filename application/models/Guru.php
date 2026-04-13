@@ -12,6 +12,7 @@ class Guru extends CI_Model {
     // Get all guru records
     public function get_all()
     {
+        $this->db->where('active', 1);
         $this->db->order_by('nama_guru', 'ASC');
         return $this->db->get('tb_guru')->result();
     }
@@ -20,6 +21,14 @@ class Guru extends CI_Model {
     public function get_by_id($id)
     {
         return $this->db->get_where('tb_guru', ['id_guru' => $id])->row();
+    }
+
+    // Get all inactive guru records
+    public function get_inactive()
+    {
+        $this->db->where('active', 0);
+        $this->db->order_by('nama_guru', 'ASC');
+        return $this->db->get('tb_guru')->result();
     }
 
     // Get guru by NIP

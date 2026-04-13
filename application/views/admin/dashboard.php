@@ -53,7 +53,7 @@
                                 <div class="card-body">
                                     <h6 class="card-title">Data Guru</h6>
                                     <p>Kelola data guru</p>
-                                    <a href="<?php echo base_url('guru'); ?>" class="btn btn-sm btn-light">
+                                    <a href="<?php echo base_url('guru/active'); ?>" class="btn btn-sm btn-light">
                                         <i class="bi bi-people"></i> Kelola
                                     </a>
                                 </div>

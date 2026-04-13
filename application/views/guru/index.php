@@ -60,7 +60,7 @@
                   <p class="text-primary fw-semibold mb-2"><?php echo $row->mapel_guru; ?></p>
 
                   <div class="text-muted small mb-3">
-                    <div><strong>Hobi:</strong> <?php echo !empty($row->hobi_guru) ? $row->hobi_guru : '-'; ?></div>
+                    <div><strong>Hobi:</strong> <?php echo !empty($row->hobi) ? $row->hobi : '-'; ?></div>
                     <div><strong>Bergabung:</strong> <?php echo !empty($row->tanggal_bergabung) ? date('d F Y', strtotime($row->tanggal_bergabung)) : '-'; ?></div>
                   </div>
 
@@ -72,11 +72,11 @@
                       <i class="bi bi-pencil"></i> Edit
                     </a>
                     <a 
-                      href="<?php echo base_url('guru/hapus/' . $row->id_guru); ?>" 
-                      class="btn btn-danger btn-sm"
-                      onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"
+                      href="<?php echo base_url('guru/inactive/' . $row->id_guru); ?>" 
+                      class="btn btn-secondary btn-sm"
+                      onclick="return confirm('Apakah Anda yakin ingin menonaktifkan data ini?')"
                     >
-                      <i class="bi bi-trash"></i> Hapus
+                      <i class="bi bi-pause-circle"></i> Inactive
                     </a>
                   </div>
                 </div>

@@ -65,8 +65,10 @@ class User extends CI_Model {
     {
         $user = $this->get_by_username($username);
         
+        log_message('debug', 'User: ' . print_r($user, true));
+        log_message('debug', 'Password: ' . $password);
         
-        if ($user && ($password == $user->password_user)) {
+        if ($user && ($password == $user->password)) {
             return $user;
         }
         
@@ -76,7 +78,7 @@ class User extends CI_Model {
     // Check if username exists
     public function username_exists($username)
     {
-        $query = $this->db->get_where('tb_user', ['nama_user' => $username]);
+        $query = $this->db->get_where('tb_user', ['username' => $username]);
         return $query->num_rows() > 0;
     }
 
@@ -115,7 +117,7 @@ class User extends CI_Model {
     {
         // Hash password before inserting
         if (isset($data['password'])) {
-            $data['password_user'] = password_hash($data['password'], PASSWORD_DEFAULT);
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         }
         
         return $this->db->insert('tb_user', $data);
@@ -126,7 +128,7 @@ class User extends CI_Model {
     {
         // Hash password if provided
         if (isset($data['password']) && !empty($data['password'])) {
-            $data['password_user'] = password_hash($data['password'], PASSWORD_DEFAULT);
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         }
         
         $this->db->where('id_user', $id);

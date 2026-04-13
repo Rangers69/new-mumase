@@ -1,3 +1,24 @@
+<?php 
+// Helper function to check if current page matches the given URL segment
+
+function is_active_page($segment) {
+    $CI =& get_instance();
+    $current_url = trim($CI->uri->uri_string(), '/');
+    $segment = trim($segment, '/');
+
+    return $current_url === $segment || strpos($current_url, $segment . '/') === 0;
+}
+
+function is_active_group($segments = []) {
+    foreach ($segments as $segment) {
+        if (is_active_page($segment)) {
+            return true;
+        }
+    }
+    return false;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,30 +99,26 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="<?php echo base_url('admin'); ?>">
+        <a class="nav-link <?php echo is_active_page('admin') ? 'active' : ''; ?>" href="<?php echo base_url('admin'); ?>">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Master Data</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed <?php echo is_active_group(['guru', 'guru/inactive']) ? 'active' : ''; ?>" data-bs-target="#guru-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-people"></i><span>Guru</span>
+          <i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="guru-nav" class="nav-content collapse <?php echo is_active_group(['guru', 'guru/inactive']) ? 'show' : ''; ?>" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="<?php echo base_url('guru'); ?>">
-              <i class="bi bi-circle"></i><span>Data Guru</span>
+            <a class="nav-link <?php echo is_active_page('guru/active') ? 'active' : ''; ?>" href="<?php echo base_url('guru/active'); ?>">
+              <i class="bi bi-person-check"></i><span>Guru Aktif</span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Data Siswa</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Data Kelas</span>
+            <a class="nav-link <?php echo is_active_page('guru/inactive') ? 'active' : ''; ?>" href="<?php echo base_url('guru/inactive'); ?>">
+              <i class="bi bi-person-x"></i><span>Guru Tidak Aktif</span>
             </a>
           </li>
         </ul>
@@ -111,7 +128,7 @@
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Akademik</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="#">
               <i class="bi bi-circle"></i><span>Jadwal Pelajaran</span>
@@ -131,14 +148,14 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link <?php echo is_active_page('laporan') ? 'active' : ''; ?>" href="#">
           <i class="bi bi-file-text"></i>
           <span>Laporan</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link <?php echo is_active_page('pengaturan') ? 'active' : ''; ?>" href="#">
           <i class="bi bi-gear"></i>
           <span>Pengaturan</span>
         </a>

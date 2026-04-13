@@ -27,7 +27,7 @@ class GuruController extends CI_Controller {
     // Halaman detail guru
     public function detail($id)
     {
-        $data['guru'] = $this->Guru_model->get_by_id($id);
+        $data['guru'] = $this->Guru->get_by_id($id);
         $data['user'] = $this->session->userdata();
         $data['title'] = 'Detail Guru - SMK Muhammadiyah 15 Jakarta';
         
@@ -44,6 +44,7 @@ class GuruController extends CI_Controller {
     public function tambah()
     {
         $data['title'] = 'Tambah Guru - SMK Muhammadiyah 15 Jakarta';
+        $data['user'] = $this->session->userdata();
         
         $this->load->view('admin/header', $data);
         $this->load->view('guru/tambah', $data);
@@ -59,7 +60,6 @@ class GuruController extends CI_Controller {
         $this->form_validation->set_rules('nip', 'NIP', 'required|numeric');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('telepon', 'Telepon', 'required|numeric');
-        $this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
@@ -70,15 +70,15 @@ class GuruController extends CI_Controller {
                 'nip' => $this->input->post('nip'),
                 'email' => $this->input->post('email'),
                 'telepon' => $this->input->post('telepon'),
-                'jurusan' => $this->input->post('jurusan'),
                 'pendidikan' => $this->input->post('pendidikan'),
-                'pengalaman' => $this->input->post('pengalaman'),
-                'mata_pelajaran' => $this->input->post('mata_pelajaran'),
+                'mapel_guru' => $this->input->post('mata_pelajaran'),
                 'foto_guru' => $this->upload_foto(),
+                'hobi' => $this->input->post('hobi'),
+                'tanggal_bergabung' => $this->input->post('tanggal_bergabung'),
                 'active' => 1
             );
             
-            $result = $this->Guru_model->insert($data);
+            $result = $this->Guru->insert($data);
             
             if ($result) {
                 $this->session->set_flashdata('success', 'Data guru berhasil ditambahkan');
@@ -93,7 +93,7 @@ class GuruController extends CI_Controller {
     // Halaman edit guru
     public function edit($id)
     {
-        $data['guru'] = $this->Guru_model->get_by_id($id);
+        $data['guru'] = $this->Guru->get_by_id($id);
         $data['user'] = $this->session->userdata();
         $data['title'] = 'Edit Guru - SMK Muhammadiyah 15 Jakarta';
         
@@ -115,7 +115,6 @@ class GuruController extends CI_Controller {
         $this->form_validation->set_rules('nip', 'NIP', 'required|numeric');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('telepon', 'Telepon', 'required|numeric');
-        $this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
         
         $id = $this->input->post('id_guru');
         
@@ -128,10 +127,10 @@ class GuruController extends CI_Controller {
                 'nip' => $this->input->post('nip'),
                 'email' => $this->input->post('email'),
                 'telepon' => $this->input->post('telepon'),
-                'jurusan' => $this->input->post('jurusan'),
+                'mapel_guru' => $this->input->post('mapel_guru'),
                 'pendidikan' => $this->input->post('pendidikan'),
-                'pengalaman' => $this->input->post('pengalaman'),
-                'mata_pelajaran' => $this->input->post('mata_pelajaran')
+                'tanggal_bergabung' => $this->input->post('tanggal_bergabung'),
+                'hobi' => $this->input->post('hobi'),
             );
             
             // Cek apakah ada upload foto baru
@@ -139,7 +138,7 @@ class GuruController extends CI_Controller {
                 $data['foto_guru'] = $this->upload_foto();
             }
             
-            $result = $this->Guru_model->update($id, $data);
+            $result = $this->Guru->update($id, $data);
             
             if ($result) {
                 $this->session->set_flashdata('success', 'Data guru berhasil diperbarui');
@@ -151,34 +150,72 @@ class GuruController extends CI_Controller {
         }
     }
 
-    // Hapus guru
-    public function hapus($id)
+    // Halaman guru tidak aktif
+    public function inactive()
     {
-        $result = $this->Guru_model->delete($id);
+        $data['guru'] = $this->Guru->get_inactive();
+        $data['user'] = $this->session->userdata();
+        $data['title'] = 'Data Guru Tidak Aktif - SMK Muhammadiyah 15 Jakarta';
+        
+        $this->load->view('admin/header', $data);
+        $this->load->view('guru/inactive', $data);
+        $this->load->view('admin/footer', $data);
+    }
+
+    // Nonaktifkan guru
+    public function set_inactive($id)
+    {
+        $data = array('active' => 0);
+        $result = $this->Guru->update($id, $data);
         
         if ($result) {
-            $this->session->set_flashdata('success', 'Data guru berhasil dihapus');
+            $this->session->set_flashdata('success', 'Data guru berhasil dinonaktifkan');
         } else {
-            $this->session->set_flashdata('error', 'Data guru gagal dihapus');
+            $this->session->set_flashdata('error', 'Data guru gagal dinonaktifkan');
         }
         
-        redirect('gurucontroller');
+        redirect('guru');
+    }
+
+    // Aktifkan kembali guru
+    public function activate($id)
+    {
+        $data = array('active' => 1);
+        $result = $this->Guru->update($id, $data);
+        
+        if ($result) {
+            $this->session->set_flashdata('success', 'Data guru berhasil diaktifkan kembali');
+        } else {
+            $this->session->set_flashdata('error', 'Data guru gagal diaktifkan kembali');
+        }
+        
+        redirect('guru/inactive');
     }
 
     // Upload foto guru
     private function upload_foto()
     {
-        $config['upload_path'] = './assets/img/guru/';
+        // Create upload directory if it doesn't exist
+        $upload_path = './assets/img/guru/';
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0755, true);
+        }
+        
+        $config['upload_path'] = $upload_path;
         $config['allowed_types'] = 'jpg|jpeg|png|gif';
-        $config['max_size'] = 2048;
+        $config['max_size'] = 10240; // 10MB
         $config['file_name'] = 'guru_' . time();
+        $config['overwrite'] = FALSE;
         
         $this->load->library('upload', $config);
         
         if ($this->upload->do_upload('foto_guru')) {
-            return $this->upload->data('file_name');
+            $upload_data = $this->upload->data();
+            return $upload_data['file_name'];
         } else {
-            return 'default.jpg'; // foto default jika upload gagal
+            // Log error for debugging
+            error_log('Upload error: ' . $this->upload->display_errors());
+            return 'default.jpg';
         }
     }
 }
