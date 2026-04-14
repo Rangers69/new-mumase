@@ -193,19 +193,32 @@
                 </div>
                 
                 <div class="col-md-6">
-                  <label for="mapel_guru" class="form-label">
-                    Mata Pelajaran yang Diampu
-                  </label>
-                  <div class="input-group">
-                    <span class="input-group-text">
-                      <i class="bi bi-journal-text"></i>
-                    </span>
-                    <input type="text" class="form-control" name="mapel_guru" id="mapel_guru" 
-                           placeholder="Contoh: Matematika, Fisika, Kimia" 
-                           value="<?php echo set_value('mapel_guru', $guru->mapel_guru); ?>">
-                  </div>
-                  <?php echo form_error('mapel_guru', '<div class="text-danger small mt-1">', '</div>'); ?>
+                <label class="form-label">
+                  Mata Pelajaran yang Diampu <span class="text-danger">*</span>
+                </label>
+                <div class="border rounded p-3" style="max-height: 220px; overflow-y: auto;">
+                  <?php if (!empty($mapel)): ?>
+                    <?php foreach ($mapel as $m): ?>
+                      <div class="form-check">
+                        <input 
+                          class="form-check-input" 
+                          type="checkbox" 
+                          name="id_mapel[]" 
+                          value="<?php echo $m->id_mapel; ?>" 
+                          id="mapel_<?php echo $m->id_mapel; ?>"
+                          <?php echo in_array($m->id_mapel, (array) $guru_mapel_selected) ? 'checked' : ''; ?>
+                        >
+                        <label class="form-check-label" for="mapel_<?php echo $m->id_mapel; ?>">
+                          <?php echo $m->nama_mapel; ?>
+                        </label>
+                      </div>
+                    <?php endforeach; ?>
+                  <?php else: ?>
+                    <div class="text-muted">Data mapel belum tersedia.</div>
+                  <?php endif; ?>
                 </div>
+                <?php echo form_error('id_mapel[]', '<div class="text-danger small mt-1">', '</div>'); ?>
+              </div>
               </div>
             </div>
 

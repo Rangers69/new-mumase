@@ -26,13 +26,19 @@
                    style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #f8f9fa;">
             </div>
             <h4 class="card-title mb-1"><?php echo $guru->nama_guru; ?></h4>
-            <p class="text-primary fw-semibold mb-3"><?php echo $guru->mapel_guru; ?></p>
+            <p class="text-primary fw-semibold mb-3">
+              <?php if (!empty($guru_mapel)): ?>
+                <?php $mapel_names = array_column($guru_mapel, 'nama_mapel'); echo implode(', ', $mapel_names); ?>
+              <?php else: ?>
+                -
+              <?php endif; ?>
+            </p>
             
             <div class="d-flex justify-content-center gap-2 mb-3">
               <a href="mailto:<?php echo $guru->email; ?>" class="btn btn-sm btn-outline-primary">
                 <i class="bi bi-envelope"></i>
               </a>
-              <a href="tel:<?php echo $guru->telepon; ?>" class="btn btn-sm btn-outline-success">
+              <a href="tel:<?php echo $guru->no_hp; ?>" class="btn btn-sm btn-outline-success">
                 <i class="bi bi-telephone"></i>
               </a>
             </div>
@@ -75,10 +81,10 @@
               </div>
               <div class="col-md-6">
                 <div class="info-item">
-                  <label class="text-muted small">Telepon</label>
+                  <label class="text-muted small">Nomor HP</label>
                   <p class="mb-0">
-                    <a href="tel:<?php echo $guru->telepon; ?>" class="text-success">
-                      <?php echo $guru->telepon; ?>
+                    <a href="tel:<?php echo $guru->no_hp; ?>" class="text-success">
+                      <?php echo $guru->no_hp; ?>
                     </a>
                   </p>
                 </div>
@@ -98,12 +104,6 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <div class="info-item">
-                  <label class="text-muted small">Jurusan</label>
-                  <p class="mb-0 fw-semibold"><?php echo $guru->mapel_guru; ?></p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-item">
                   <label class="text-muted small">Pendidikan</label>
                   <p class="mb-0 fw-semibold"><?php echo $guru->pendidikan ?: '-'; ?></p>
                 </div>
@@ -111,7 +111,15 @@
               <div class="col-12">
                 <div class="info-item">
                   <label class="text-muted small">Mata Pelajaran yang Diampu</label>
-                  <p class="mb-0"><?php echo $guru->mapel_guru ?: '-'; ?></p>
+                  <p class="mb-0">
+                    <?php if (!empty($guru_mapel)): ?>
+                      <?php foreach ($guru_mapel as $mapel): ?>
+                        <span class="badge bg-primary me-1 mb-1"><?php echo $mapel->nama_mapel; ?></span>
+                      <?php endforeach; ?>
+                    <?php else: ?>
+                      -
+                    <?php endif; ?>
+                  </p>
                 </div>
               </div>
             </div>

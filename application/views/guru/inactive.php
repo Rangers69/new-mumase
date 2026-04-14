@@ -58,7 +58,15 @@
                        style="width: 100px; height: 100px; object-fit: cover;">
 
                   <h5 class="card-title mb-1"><?php echo $row->nama_guru; ?></h5>
-                  <p class="text-muted mb-2"><?php echo $row->mapel_guru; ?></p>
+                  <p class="text-muted mb-2">
+                    <?php if (!empty($row->guru_mapel)): ?>
+                      <?php foreach ($row->guru_mapel as $mapel): ?>
+                        <span class="badge bg-secondary me-1 mb-1"><?php echo $mapel->nama_mapel; ?></span>
+                      <?php endforeach; ?>
+                    <?php else: ?>
+                      -
+                    <?php endif; ?>
+                  </p>
 
                   <div class="text-muted small mb-3">
                     <div><strong>Hobi:</strong> <?php echo !empty($row->hobi) ? $row->hobi : '-'; ?></div>
@@ -68,9 +76,6 @@
                   <div class="d-flex justify-content-center gap-2 flex-wrap">
                     <a href="<?php echo base_url('guru/detail/' . $row->id_guru); ?>" class="btn btn-info btn-sm text-white">
                       <i class="bi bi-eye"></i> Detail
-                    </a>
-                    <a href="<?php echo base_url('guru/edit/' . $row->id_guru); ?>" class="btn btn-warning btn-sm text-white">
-                      <i class="bi bi-pencil"></i> Edit
                     </a>
                     <a 
                       href="<?php echo base_url('guru/activate/' . $row->id_guru); ?>" 

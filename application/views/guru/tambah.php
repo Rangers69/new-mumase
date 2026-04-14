@@ -138,17 +138,17 @@
               
               <div class="col-md-6">
                 <label for="telepon" class="form-label">
-                  Nomor Telepon <span class="text-danger">*</span>
+                  Nomor HP <span class="text-danger">*</span>
                 </label>
                 <div class="input-group">
                   <span class="input-group-text">
                     <i class="bi bi-telephone"></i>
                   </span>
-                  <input type="tel" class="form-control" name="telepon" id="telepon" 
+                  <input type="tel" class="form-control" name="no_hp" id="no_hp" 
                          placeholder="0812-3456-7890" required 
-                         value="<?php echo set_value('telepon'); ?>">
+                         value="<?php echo set_value('no_hp'); ?>">
                 </div>
-                <?php echo form_error('telepon', '<div class="text-danger small mt-1">', '</div>'); ?>
+                <?php echo form_error('no_hp', '<div class="text-danger small mt-1">', '</div>'); ?>
               </div>
             </div>
           </div>
@@ -188,28 +188,35 @@
               </div>
               
               <div class="col-md-6">
-                <label for="mata_pelajaran" class="form-label">
-                  Mata Pelajaran yang Diampu
+                <label class="form-label">
+                  Mata Pelajaran yang Diampu <span class="text-danger">*</span>
                 </label>
-                <div class="input-group">
-                  <span class="input-group-text">
-                    <i class="bi bi-journal-text"></i>
-                  </span>
-                  <input type="text" class="form-control" name="mata_pelajaran" id="mata_pelajaran" 
-                         placeholder="Contoh: Matematika, Fisika, Kimia" 
-                         value="<?php echo set_value('mata_pelajaran'); ?>">
+                <div class="border rounded p-3" style="max-height: 220px; overflow-y: auto;">
+                  <?php if (!empty($mapel)): ?>
+                    <?php foreach ($mapel as $m): ?>
+                      <div class="form-check">
+                        <input 
+                          class="form-check-input" 
+                          type="checkbox" 
+                          name="id_mapel[]" 
+                          value="<?php echo $m->id_mapel; ?>" 
+                          id="mapel_<?php echo $m->id_mapel; ?>"
+                          <?php echo in_array($m->id_mapel, (array) set_value('id_mapel', [])) ? 'checked' : ''; ?>
+                        >
+                        <label class="form-check-label" for="mapel_<?php echo $m->id_mapel; ?>">
+                          <?php echo $m->nama_mapel; ?>
+                        </label>
+                      </div>
+                    <?php endforeach; ?>
+                  <?php else: ?>
+                    <div class="text-muted">Data mapel belum tersedia.</div>
+                  <?php endif; ?>
                 </div>
-                <?php echo form_error('mata_pelajaran', '<div class="text-danger small mt-1">', '</div>'); ?>
+                <?php echo form_error('id_mapel[]', '<div class="text-danger small mt-1">', '</div>'); ?>
               </div>
             </div>
           </div>
 
-          <!-- Informasi Tambahan -->
-          <!-- <div class="col-lg-12 mb-4">
-            <h6 class="text-primary fw-bold mb-3">
-              <i class="bi bi-info-circle me-2"></i>Informasi Tambahan
-            </h6>
-          </div> -->
 
           <!-- Upload Foto -->
           <div class="col-lg-12 mb-4">

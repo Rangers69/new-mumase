@@ -10,6 +10,7 @@ class GuruController extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->model('Guru');
+        $this->load->model('Mapel');
     }
 
     // Halaman utama guru - menampilkan daftar guru
@@ -36,6 +37,16 @@ class GuruController extends CI_Controller {
             show_404();
         }
         
+        // Get guru mapel assignments with names
+        $this->db->select('tb_mapel.nama_mapel');
+        $this->db->from('tb_guru_mapel');
+        $this->db->join('tb_mapel', 'tb_mapel.id_mapel = tb_guru_mapel.id_mapel', 'inner');
+        $this->db->where('tb_guru_mapel.id_guru', $id);
+        $this->db->where('tb_guru_mapel.active', 1);
+        $this->db->order_by('tb_mapel.nama_mapel', 'ASC');
+        $guru_mapel = $this->db->get()->result();
+        $data['guru_mapel'] = $guru_mapel;
+        
         $this->load->view('admin/header', $data);
         $this->load->view('guru/detail', $data);
         $this->load->view('admin/footer', $data);
@@ -46,6 +57,8 @@ class GuruController extends CI_Controller {
     {
         $data['title'] = 'Tambah Guru - SMK Muhammadiyah 15 Jakarta';
         $data['user'] = $this->session->userdata();
+        $data['mapel'] = $this->Mapel->get_all_active();
+
         
         $this->load->view('admin/header', $data);
         $this->load->view('guru/tambah', $data);
@@ -56,38 +69,69 @@ class GuruController extends CI_Controller {
     public function proses_tambah()
     {
         $this->load->library('form_validation');
-        
-        $this->form_validation->set_rules('nama_guru', 'Nama Guru', 'required');
-        $this->form_validation->set_rules('nip', 'NIP', 'required|numeric');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('telepon', 'Telepon', 'required|numeric');
-        
+
+        $this->form_validation->set_rules('nama_guru', 'Nama Guru', 'required|trim');
+        $this->form_validation->set_rules('nip', 'NIP', 'required|trim|numeric');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('no_hp', 'No HP', 'required|trim|numeric');
+        $this->form_validation->set_rules('pendidikan', 'Pendidikan', 'trim');
+
+        $id_mapel = $this->input->post('id_mapel');
+
+        if (empty($id_mapel) || !is_array($id_mapel)) {
+            $this->session->set_flashdata('error', 'Mata pelajaran wajib dipilih minimal 1.');
+            redirect('gurucontroller/tambah');
+            return;
+        }
+
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
             redirect('gurucontroller/tambah');
-        } else {
-            $data = array(
-                'nama_guru' => $this->input->post('nama_guru'),
-                'nip' => $this->input->post('nip'),
-                'email' => $this->input->post('email'),
-                'telepon' => $this->input->post('telepon'),
-                'pendidikan' => $this->input->post('pendidikan'),
-                'mapel_guru' => $this->input->post('mata_pelajaran'),
-                'foto_guru' => $this->upload_foto(),
-                'hobi' => $this->input->post('hobi'),
-                'tanggal_bergabung' => $this->input->post('tanggal_bergabung'),
+            return;
+        }
+
+        $foto_guru = $this->upload_foto();
+
+        $data = array(
+            'nama_guru' => $this->input->post('nama_guru', true),
+            'nip' => $this->input->post('nip', true),
+            'email' => $this->input->post('email', true),
+            'no_hp' => $this->input->post('no_hp', true),
+            'pendidikan' => $this->input->post('pendidikan', true),
+            'foto_guru' => $foto_guru,
+            'hobi' => $this->input->post('hobi', true),
+            'tanggal_bergabung' => $this->input->post('tanggal_bergabung', true),
+            'active' => 1
+        );
+
+        $this->db->trans_begin();
+
+        $this->db->insert('tb_guru', $data);
+        $id_guru = $this->db->insert_id();
+
+        if (!$id_guru) {
+            $this->db->trans_rollback();
+            $this->session->set_flashdata('error', 'Data guru gagal ditambahkan.');
+            redirect('gurucontroller/tambah');
+            return;
+        }
+
+        foreach ($id_mapel as $mapel) {
+            $this->db->insert('tb_guru_mapel', array(
+                'id_guru' => $id_guru,
+                'id_mapel' => $mapel,
                 'active' => 1
-            );
-            
-            $result = $this->Guru->insert($data);
-            
-            if ($result) {
-                $this->session->set_flashdata('success', 'Data guru berhasil ditambahkan');
-                redirect('gurucontroller');
-            } else {
-                $this->session->set_flashdata('error', 'Data guru gagal ditambahkan');
-                redirect('gurucontroller/tambah');
-            }
+            ));
+        }
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            $this->session->set_flashdata('error', 'Data guru gagal ditambahkan.');
+            redirect('gurucontroller/tambah');
+        } else {
+            $this->db->trans_commit();
+            $this->session->set_flashdata('success', 'Data guru berhasil ditambahkan.');
+            redirect('gurucontroller');
         }
     }
 
@@ -95,12 +139,20 @@ class GuruController extends CI_Controller {
     public function edit($id)
     {
         $data['guru'] = $this->Guru->get_by_id($id);
+        $data['mapel'] = $this->Mapel->get_all_active();
         $data['user'] = $this->session->userdata();
         $data['title'] = 'Edit Guru - SMK Muhammadiyah 15 Jakarta';
         
         if (empty($data['guru'])) {
             show_404();
         }
+        
+        // Get current guru mapel assignments
+        $this->db->select('id_mapel');
+        $this->db->where('id_guru', $id);
+        $this->db->where('active', 1);
+        $guru_mapel = $this->db->get('tb_guru_mapel')->result();
+        $data['guru_mapel_selected'] = array_column($guru_mapel, 'id_mapel');
         
         $this->load->view('admin/header', $data);
         $this->load->view('guru/edit', $data);
@@ -112,42 +164,69 @@ class GuruController extends CI_Controller {
     {
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nama_guru', 'Nama Guru', 'required');
-        $this->form_validation->set_rules('nip', 'NIP', 'required|numeric');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-        $this->form_validation->set_rules('telepon', 'Telepon', 'required|numeric');
+        $this->form_validation->set_rules('nama_guru', 'Nama Guru', 'required|trim');
+        $this->form_validation->set_rules('nip', 'NIP', 'required|trim|numeric');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('no_hp', 'No HP', 'required|trim|numeric');
+        $this->form_validation->set_rules('pendidikan', 'Pendidikan', 'trim');
         
         $id = $this->input->post('id_guru');
+        $id_mapel = $this->input->post('id_mapel');
+        
+        if (empty($id_mapel) || !is_array($id_mapel)) {
+            $this->session->set_flashdata('error', 'Mata pelajaran wajib dipilih minimal 1.');
+            redirect('gurucontroller/edit/' . $id);
+            return;
+        }
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
             redirect('gurucontroller/edit/' . $id);
+            return;
+        }
+        
+        $data = array(
+            'nama_guru' => $this->input->post('nama_guru', true),
+            'nip' => $this->input->post('nip', true),
+            'email' => $this->input->post('email', true),
+            'no_hp' => $this->input->post('no_hp', true),
+            'pendidikan' => $this->input->post('pendidikan', true),
+            'hobi' => $this->input->post('hobi', true),
+            'tanggal_bergabung' => $this->input->post('tanggal_bergabung', true),
+        );
+        
+        // Cek apakah ada upload foto baru
+        if (!empty($_FILES['foto_guru']['name'])) {
+            $data['foto_guru'] = $this->upload_foto();
+        }
+        
+        $this->db->trans_begin();
+        
+        // Update guru data
+        $this->db->where('id_guru', $id);
+        $this->db->update('tb_guru', $data);
+        
+        // Delete existing mapel assignments
+        $this->db->where('id_guru', $id);
+        $this->db->delete('tb_guru_mapel');
+        
+        // Insert new mapel assignments
+        foreach ($id_mapel as $mapel) {
+            $this->db->insert('tb_guru_mapel', array(
+                'id_guru' => $id,
+                'id_mapel' => $mapel,
+                'active' => 1
+            ));
+        }
+        
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            $this->session->set_flashdata('error', 'Data guru gagal diperbarui.');
+            redirect('gurucontroller/edit/' . $id);
         } else {
-            $data = array(
-                'nama_guru' => $this->input->post('nama_guru'),
-                'nip' => $this->input->post('nip'),
-                'email' => $this->input->post('email'),
-                'telepon' => $this->input->post('telepon'),
-                'mapel_guru' => $this->input->post('mapel_guru'),
-                'pendidikan' => $this->input->post('pendidikan'),
-                'tanggal_bergabung' => $this->input->post('tanggal_bergabung'),
-                'hobi' => $this->input->post('hobi'),
-            );
-            
-            // Cek apakah ada upload foto baru
-            if (!empty($_FILES['foto_guru']['name'])) {
-                $data['foto_guru'] = $this->upload_foto();
-            }
-            
-            $result = $this->Guru->update($id, $data);
-            
-            if ($result) {
-                $this->session->set_flashdata('success', 'Data guru berhasil diperbarui');
-                redirect('gurucontroller');
-            } else {
-                $this->session->set_flashdata('error', 'Data guru gagal diperbarui');
-                redirect('gurucontroller/edit/' . $id);
-            }
+            $this->db->trans_commit();
+            $this->session->set_flashdata('success', 'Data guru berhasil diperbarui.');
+            redirect('gurucontroller');
         }
     }
 
@@ -157,6 +236,20 @@ class GuruController extends CI_Controller {
         $data['guru'] = $this->Guru->get_inactive();
         $data['user'] = $this->session->userdata();
         $data['title'] = 'Data Guru Tidak Aktif - SMK Muhammadiyah 15 Jakarta';
+        
+        // Load mapel data for each inactive guru
+        if (!empty($data['guru'])) {
+            foreach ($data['guru'] as $guru) {
+                $this->db->select('tb_mapel.nama_mapel');
+                $this->db->from('tb_guru_mapel');
+                $this->db->join('tb_mapel', 'tb_mapel.id_mapel = tb_guru_mapel.id_mapel', 'inner');
+                $this->db->where('tb_guru_mapel.id_guru', $guru->id_guru);
+                $this->db->where('tb_guru_mapel.active', 1);
+                $this->db->order_by('tb_mapel.nama_mapel', 'ASC');
+                $guru_mapel = $this->db->get()->result();
+                $guru->guru_mapel = $guru_mapel;
+            }
+        }
         
         $this->load->view('admin/header', $data);
         $this->load->view('guru/inactive', $data);
