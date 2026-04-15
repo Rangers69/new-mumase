@@ -40,7 +40,7 @@
               </div>
               <div class="member-info">
                 <h4><?php echo $row->nama_guru; ?></h4>
-                <span><?php echo $row->mapel_guru; ?></span>
+                <span><?php echo $row->nama_mapel; ?></span>
                 <div class="social">
                   <?php if (!empty($row->email)): ?>
                     <a href="mailto:<?php echo $row->email; ?>" title="Email">
@@ -191,10 +191,11 @@
 
 .member-info span {
   display: block;
-  color: #e74c3c;
+  color: #ff3d07;
   font-weight: 500;
   margin-bottom: 15px;
   font-size: 14px;
+  font-style: bold;
 }
 
 .member-info .social {
