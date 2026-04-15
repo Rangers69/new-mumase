@@ -140,3 +140,29 @@ $route['pimpinan/insert'] = 'PimpinanController/insert';
 $route['pimpinan/update'] = 'PimpinanController/update';
 $route['pimpinan/delete/(:num)'] = 'PimpinanController/delete/$1';
 
+// Routes untuk Mapel (Mata Pelajaran)
+$route['mapel'] = 'MapelController';
+$route['mapel/detail/(:num)'] = 'MapelController/detail/$1';
+$route['mapel/edit/(:num)'] = 'MapelController/edit/$1';
+$route['mapel/tambah'] = 'MapelController/tambah';
+$route['mapel/proses_tambah'] = 'MapelController/proses_tambah';
+$route['mapel/proses_edit'] = 'MapelController/proses_edit';
+$route['mapel/set_inactive/(:num)'] = 'MapelController/set_inactive/$1';
+$route['mapel/activate/(:num)'] = 'MapelController/activate/$1';
+$route['mapel/hapus/(:num)'] = 'MapelController/hapus/$1';
+
+// Routes untuk Siswa
+$route['siswa'] = 'SiswaController';
+$route['siswa/detail/(:num)'] = 'SiswaController/detail/$1';
+$route['siswa/edit/(:num)'] = 'SiswaController/edit/$1';
+$route['siswa/tambah'] = 'SiswaController/tambah';
+$route['siswa/proses_tambah'] = 'SiswaController/proses_tambah';
+$route['siswa/proses_edit'] = 'SiswaController/proses_edit';
+$route['siswa/set_inactive/(:num)'] = 'SiswaController/set_inactive/$1';
+$route['siswa/activate/(:num)'] = 'SiswaController/activate/$1';
+$route['siswa/hapus/(:num)'] = 'SiswaController/hapus/$1';
+$route['siswa/inactive'] = 'SiswaController/inactive';
+$route['siswa/import'] = 'SiswaController/import';
+$route['siswa/download_template'] = 'SiswaController/download_template';
+$route['siswa/proses_import'] = 'SiswaController/proses_import';
+

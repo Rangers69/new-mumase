@@ -132,23 +132,23 @@ function is_active_group($segments = []) {
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed <?php echo (is_active_page('mapel') || is_active_page('jadwal') || is_active_page('siswa')) ? 'active' : ''; ?>" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Akademik</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <ul id="forms-nav" class="nav-content collapse <?php echo (is_active_page('mapel') || is_active_page('jadwal') || is_active_page('siswa')) ? 'show' : ''; ?>" data-bs-parent="#sidebar-nav">
           <li>
             <a href="#">
               <i class="bi bi-circle"></i><span>Jadwal Pelajaran</span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Nilai Siswa</span>
+            <a href="<?php echo base_url('siswa'); ?>" class="<?php echo is_active_page('siswa') ? 'active' : ''; ?>">
+              <i class="bi bi-circle"></i><span>Siswa</span>
             </a>
           </li>
           <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Rapor</span>
+            <a href="<?php echo base_url('mapel'); ?>" class="<?php echo is_active_page('mapel') ? 'active' : ''; ?>">
+              <i class="bi bi-circle"></i><span>Mapel</span>
             </a>
           </li>
         </ul>
