@@ -166,3 +166,14 @@ $route['siswa/import'] = 'SiswaController/import';
 $route['siswa/download_template'] = 'SiswaController/download_template';
 $route['siswa/proses_import'] = 'SiswaController/proses_import';
 
+$route['jadwal'] = 'JadwalController';
+$route['jadwal/detail/(:num)'] = 'JadwalController/detail/$1';
+$route['jadwal/edit/(:num)'] = 'JadwalController/edit/$1';
+$route['jadwal/tambah'] = 'JadwalController/tambah';
+$route['jadwal/proses_tambah'] = 'JadwalController/proses_tambah';
+$route['jadwal/proses_edit'] = 'JadwalController/proses_edit';
+$route['jadwal/set_inactive/(:num)'] = 'JadwalController/set_inactive/$1';
+$route['jadwal/activate/(:num)'] = 'JadwalController/activate/$1';
+$route['jadwal/hapus/(:num)'] = 'JadwalController/hapus/$1';
+$route['jadwal/inactive'] = 'JadwalController/inactive';
+

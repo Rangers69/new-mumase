@@ -137,7 +137,7 @@ function is_active_group($segments = []) {
         </a>
         <ul id="forms-nav" class="nav-content collapse <?php echo (is_active_page('mapel') || is_active_page('jadwal') || is_active_page('siswa')) ? 'show' : ''; ?>" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a href="<?php echo base_url('jadwal'); ?>" class="<?php echo is_active_page('jadwal') ? 'active' : ''; ?>">
               <i class="bi bi-circle"></i><span>Jadwal Pelajaran</span>
             </a>
           </li>
