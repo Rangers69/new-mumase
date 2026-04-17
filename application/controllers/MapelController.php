@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MapelController extends CI_Controller {
+class MapelController extends MY_Controller {
 
     public function __construct()
     {

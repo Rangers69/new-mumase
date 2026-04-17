@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class GuruController extends CI_Controller {
+class GuruController extends MY_Controller {
 
     public function __construct()
     {
@@ -80,13 +80,13 @@ class GuruController extends CI_Controller {
 
         if (empty($id_mapel) || !is_array($id_mapel)) {
             $this->session->set_flashdata('error', 'Mata pelajaran wajib dipilih minimal 1.');
-            redirect('gurucontroller/tambah');
+            redirect('GuruController/tambah');
             return;
         }
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('gurucontroller/tambah');
+            redirect('GuruController/tambah');
             return;
         }
 
@@ -112,7 +112,7 @@ class GuruController extends CI_Controller {
         if (!$id_guru) {
             $this->db->trans_rollback();
             $this->session->set_flashdata('error', 'Data guru gagal ditambahkan.');
-            redirect('gurucontroller/tambah');
+            redirect('GuruController/tambah');
             return;
         }
 
@@ -127,7 +127,7 @@ class GuruController extends CI_Controller {
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
             $this->session->set_flashdata('error', 'Data guru gagal ditambahkan.');
-            redirect('gurucontroller/tambah');
+            redirect('GuruController/tambah');
         } else {
             $this->db->trans_commit();
             $this->session->set_flashdata('success', 'Data guru berhasil ditambahkan.');
@@ -175,13 +175,13 @@ class GuruController extends CI_Controller {
         
         if (empty($id_mapel) || !is_array($id_mapel)) {
             $this->session->set_flashdata('error', 'Mata pelajaran wajib dipilih minimal 1.');
-            redirect('gurucontroller/edit/' . $id);
+            redirect('GuruController/edit/' . $id);
             return;
         }
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('gurucontroller/edit/' . $id);
+            redirect('GuruController/edit/' . $id);
             return;
         }
         
@@ -222,7 +222,7 @@ class GuruController extends CI_Controller {
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
             $this->session->set_flashdata('error', 'Data guru gagal diperbarui.');
-            redirect('gurucontroller/edit/' . $id);
+            redirect('GuruController/edit/' . $id);
         } else {
             $this->db->trans_commit();
             $this->session->set_flashdata('success', 'Data guru berhasil diperbarui.');

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Muhammadiyah extends CI_Controller {
+class Muhammadiyah extends MY_Controller {
 
 	public function index()
 	{

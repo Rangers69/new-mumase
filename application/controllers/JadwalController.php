@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class JadwalController extends CI_Controller {
+class JadwalController extends MY_Controller {
 
     public function __construct()
     {

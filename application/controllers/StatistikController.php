@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class StatistikController extends CI_Controller {
+class StatistikController extends MY_Controller {
 
     public function __construct()
     {
