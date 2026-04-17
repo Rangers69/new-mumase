@@ -5,7 +5,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?php echo base_url('admin'); ?>">Home</a></li>
       <li class="breadcrumb-item">Master Data</li>
-      <li class="breadcrumb-item"><a href="<?php echo base_url('mapelcontroller'); ?>">Mata Pelajaran</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo base_url('MapelController'); ?>">Mata Pelajaran</a></li>
       <li class="breadcrumb-item active">Tambah</li>
     </ol>
   </nav>
@@ -42,7 +42,7 @@
       <?php endif; ?>
 
       <!-- Form -->
-      <form action="<?php echo base_url('mapelcontroller/proses_tambah'); ?>" method="post" role="form">
+      <form action="<?php echo base_url('MapelController/proses_tambah'); ?>" method="post" role="form">
         <div class="row">
           <!-- Informasi Utama -->
           <div class="col-lg-12 mb-4">
@@ -88,7 +88,7 @@
           <!-- Submit Buttons -->
           <div class="col-lg-12">
             <div class="d-flex justify-content-end gap-2">
-              <a href="<?php echo base_url('mapelcontroller'); ?>" class="btn btn-secondary">
+              <a href="<?php echo base_url('MapelController'); ?>" class="btn btn-secondary">
                 <i class="bi bi-arrow-left me-1"></i>
                 Batal
               </a>

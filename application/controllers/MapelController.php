@@ -61,7 +61,7 @@ class MapelController extends CI_Controller {
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('mapelcontroller/tambah');
+            redirect('MapelController/tambah');
         } else {
             $data = array(
                 'nama_mapel' => $this->input->post('nama_mapel', true),
@@ -72,10 +72,10 @@ class MapelController extends CI_Controller {
             
             if ($result) {
                 $this->session->set_flashdata('success', 'Data mata pelajaran berhasil ditambahkan');
-                redirect('mapelcontroller');
+                redirect('MapelController');
             } else {
                 $this->session->set_flashdata('error', 'Data mata pelajaran gagal ditambahkan');
-                redirect('mapelcontroller/tambah');
+                redirect('MapelController/tambah');
             }
         }
     }
@@ -111,7 +111,7 @@ class MapelController extends CI_Controller {
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('mapelcontroller/edit/' . $id);
+            redirect('MapelController/edit/' . $id);
         } else {
             $data = array(
                 'nama_mapel' => $this->input->post('nama_mapel', true),
@@ -122,10 +122,10 @@ class MapelController extends CI_Controller {
             
             if ($result) {
                 $this->session->set_flashdata('success', 'Data mata pelajaran berhasil diperbarui');
-                redirect('mapelcontroller');
+                redirect('MapelController');
             } else {
                 $this->session->set_flashdata('error', 'Data mata pelajaran gagal diperbarui');
-                redirect('mapelcontroller/edit/' . $id);
+                redirect('MapelController/edit/' . $id);
             }
         }
     }
@@ -153,7 +153,7 @@ class MapelController extends CI_Controller {
             $this->session->set_flashdata('error', 'Data mata pelajaran gagal dinonaktifkan');
         }
         
-        redirect('mapelcontroller');
+        redirect('MapelController');
     }
 
     // Aktifkan kembali mapel
@@ -167,7 +167,7 @@ class MapelController extends CI_Controller {
             $this->session->set_flashdata('error', 'Data mata pelajaran gagal diaktifkan kembali');
         }
         
-        redirect('mapelcontroller');
+        redirect('MapelController');
     }
 
     // Hapus mapel
@@ -180,7 +180,7 @@ class MapelController extends CI_Controller {
         
         if ($guru_count > 0) {
             $this->session->set_flashdata('error', 'Mata pelajaran tidak dapat dihapus karena masih digunakan oleh guru. Nonaktifkan terlebih dahulu jika tidak ingin digunakan.');
-            redirect('mapelcontroller');
+            redirect('MapelController');
             return;
         }
         
@@ -192,6 +192,6 @@ class MapelController extends CI_Controller {
             $this->session->set_flashdata('error', 'Data mata pelajaran gagal dihapus');
         }
         
-        redirect('mapelcontroller');
+        redirect('MapelController');
     }
 }

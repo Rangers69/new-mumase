@@ -5,7 +5,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?php echo base_url('admin'); ?>">Home</a></li>
       <li class="breadcrumb-item">Master Data</li>
-      <li class="breadcrumb-item"><a href="<?php echo base_url('mapelcontroller'); ?>">Mata Pelajaran</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo base_url('MapelController'); ?>">Mata Pelajaran</a></li>
       <li class="breadcrumb-item active">Detail</li>
     </ol>
   </nav>
@@ -117,23 +117,23 @@
 
         <!-- Action Buttons -->
         <div class="d-flex justify-content-end gap-2">
-          <a href="<?php echo base_url('mapelcontroller'); ?>" class="btn btn-secondary">
+          <a href="<?php echo base_url('MapelController'); ?>" class="btn btn-secondary">
             <i class="bi bi-arrow-left me-1"></i>
             Kembali
           </a>
-          <a href="<?php echo base_url('mapelcontroller/edit/' . $mapel->id_mapel); ?>" class="btn btn-warning text-white">
+          <a href="<?php echo base_url('MapelController/edit/' . $mapel->id_mapel); ?>" class="btn btn-warning text-white">
             <i class="bi bi-pencil me-1"></i>
             Edit
           </a>
           <?php if ($mapel->active == 1): ?>
-            <a href="<?php echo base_url('mapelcontroller/set_inactive/' . $mapel->id_mapel); ?>" 
+            <a href="<?php echo base_url('MapelController/set_inactive/' . $mapel->id_mapel); ?>" 
                class="btn btn-secondary"
                onclick="return confirm('Apakah Anda yakin ingin menonaktifkan mata pelajaran ini?')">
               <i class="bi bi-pause-circle me-1"></i>
               Nonaktifkan
             </a>
           <?php else: ?>
-            <a href="<?php echo base_url('mapelcontroller/activate/' . $mapel->id_mapel); ?>" 
+            <a href="<?php echo base_url('MapelController/activate/' . $mapel->id_mapel); ?>" 
                class="btn btn-success"
                onclick="return confirm('Apakah Anda yakin ingin mengaktifkan kembali mata pelajaran ini?')">
               <i class="bi bi-play-circle me-1"></i>

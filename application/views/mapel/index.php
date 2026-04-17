@@ -21,7 +21,7 @@
             Kelola data mata pelajaran yang tersedia di sekolah.
           </p>
         </div>
-        <a href="<?php echo base_url('mapelcontroller/tambah'); ?>" class="btn btn-primary">
+        <a href="<?php echo base_url('MapelController/tambah'); ?>" class="btn btn-primary">
           <i class="bi bi-plus-circle me-1"></i> Tambah Mata Pelajaran
         </a>
       </div>
@@ -75,28 +75,28 @@
                   </td>
                   <td class="text-center">
                     <div class="btn-group" role="group">
-                      <a href="<?php echo base_url('mapelcontroller/detail/' . $row->id_mapel); ?>" 
+                      <a href="<?php echo base_url('MapelController/detail/' . $row->id_mapel); ?>" 
                          class="btn btn-sm btn-info text-white" title="Detail">
                         <i class="bi bi-eye"></i>
                       </a>
-                      <a href="<?php echo base_url('mapelcontroller/edit/' . $row->id_mapel); ?>" 
+                      <a href="<?php echo base_url('MapelController/edit/' . $row->id_mapel); ?>" 
                          class="btn btn-sm btn-warning text-white" title="Edit">
                         <i class="bi bi-pencil"></i>
                       </a>
                       <?php if ($row->active == 1): ?>
-                        <a href="<?php echo base_url('mapelcontroller/set_inactive/' . $row->id_mapel); ?>" 
+                        <a href="<?php echo base_url('MapelController/set_inactive/' . $row->id_mapel); ?>" 
                            class="btn btn-sm btn-secondary" title="Nonaktifkan"
                            onclick="return confirm('Apakah Anda yakin ingin menonaktifkan mata pelajaran ini?')">
                           <i class="bi bi-pause-circle"></i>
                         </a>
                       <?php else: ?>
-                        <a href="<?php echo base_url('mapelcontroller/activate/' . $row->id_mapel); ?>" 
+                        <a href="<?php echo base_url('MapelController/activate/' . $row->id_mapel); ?>" 
                            class="btn btn-sm btn-success" title="Aktifkan"
                            onclick="return confirm('Apakah Anda yakin ingin mengaktifkan kembali mata pelajaran ini?')">
                           <i class="bi bi-play-circle"></i>
                         </a>
                       <?php endif; ?>
-                      <a href="<?php echo base_url('mapelcontroller/hapus/' . $row->id_mapel); ?>" 
+                      <a href="<?php echo base_url('MapelController/hapus/' . $row->id_mapel); ?>" 
                          class="btn btn-sm btn-danger" title="Hapus"
                          onclick="return confirm('Apakah Anda yakin ingin menghapus mata pelajaran ini?')">
                         <i class="bi bi-trash"></i>
