@@ -226,7 +226,7 @@ class GuruController extends MY_Controller {
         } else {
             $this->db->trans_commit();
             $this->session->set_flashdata('success', 'Data guru berhasil diperbarui.');
-            redirect('gurucontroller');
+            redirect('guruController');
         }
     }
 
