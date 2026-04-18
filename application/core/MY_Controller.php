@@ -33,7 +33,7 @@ class MY_Controller extends CI_Controller
         // cek session login
         if (!$this->session->userdata('logged_in')) {
             $this->session->set_flashdata('error', 'Session habis, silakan login kembali.');
-            redirect('auth/login');
+            redirect('auth');
         }
     }
 }

@@ -39,11 +39,4 @@ class Admin extends MY_Controller {
         $this->load->view('admin/dashboard', $data);
         $this->load->view('admin/footer', $data);
     }
-
-    public function logout()
-    {
-        $this->session->sess_destroy();
-        $this->session->set_flashdata('success', 'Anda telah berhasil logout!');
-        redirect('auth');
-    }
 }

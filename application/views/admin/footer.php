@@ -25,3 +25,10 @@
 </body>
 
 </html>
+<script>
+    let sessionTimeout = <?= $this->config->item('sess_expiration') * 1000 ?>;
+
+    setTimeout(function() {
+        window.location.href = "<?= base_url('auth/logout') ?>";
+    }, sessionTimeout);
+</script>
