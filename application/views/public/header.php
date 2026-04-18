@@ -68,7 +68,7 @@
               <li><a href="<?php echo base_url('guru/public'); ?>">Guru</a></li>
             </ul>
           </li>
-          <li><a href="#program">Program Unggulan</a></li>
+          <li><a href="<?php echo base_url(); ?>#program">Program Unggulan</a></li>
           <li><a href="#pimpinan">Pimpinan</a></li>
           <li class="dropdown">
             <a href="#"><span>Lainnya</span>
