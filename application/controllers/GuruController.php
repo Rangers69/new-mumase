@@ -80,13 +80,13 @@ class GuruController extends MY_Controller {
 
         if (empty($id_mapel) || !is_array($id_mapel)) {
             $this->session->set_flashdata('error', 'Mata pelajaran wajib dipilih minimal 1.');
-            redirect('GuruController/tambah');
+            redirect('guru/tambah');
             return;
         }
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('GuruController/tambah');
+            redirect('guru/tambah');
             return;
         }
 
@@ -112,7 +112,7 @@ class GuruController extends MY_Controller {
         if (!$id_guru) {
             $this->db->trans_rollback();
             $this->session->set_flashdata('error', 'Data guru gagal ditambahkan.');
-            redirect('GuruController/tambah');
+            redirect('guru/tambah');
             return;
         }
 
@@ -127,11 +127,11 @@ class GuruController extends MY_Controller {
         if ($this->db->trans_status() === FALSE) {
             $this->db->trans_rollback();
             $this->session->set_flashdata('error', 'Data guru gagal ditambahkan.');
-            redirect('GuruController/tambah');
+            redirect('guru/tambah');
         } else {
             $this->db->trans_commit();
             $this->session->set_flashdata('success', 'Data guru berhasil ditambahkan.');
-            redirect('gurucontroller');
+            redirect('guru');
         }
     }
 
