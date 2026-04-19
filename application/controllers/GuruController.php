@@ -318,7 +318,7 @@ class GuruController extends MY_Controller {
             return $upload_data['file_name'];
         } else {
             error_log('Upload error: ' . $this->upload->display_errors());
-            return 'default.jpg';
+            return 'user.png';
         }
     }
 }
