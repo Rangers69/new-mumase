@@ -5,7 +5,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?php echo base_url('admin'); ?>">Home</a></li>
       <li class="breadcrumb-item">Master Data</li>
-      <li class="breadcrumb-item"><a href="<?php echo base_url('siswacontroller'); ?>">Siswa</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo base_url('SiswaController'); ?>">Siswa</a></li>
       <li class="breadcrumb-item active">Detail</li>
     </ol>
   </nav>
@@ -208,15 +208,15 @@
 
         <!-- Action Buttons -->
         <div class="d-flex justify-content-end gap-2">
-          <a href="<?php echo base_url('siswacontroller'); ?>" class="btn btn-secondary">
+          <a href="<?php echo base_url('SiswaController'); ?>" class="btn btn-secondary">
             <i class="bi bi-arrow-left me-1"></i>
             Kembali
           </a>
-          <a href="<?php echo base_url('siswacontroller/edit/' . $siswa->id_siswa); ?>" class="btn btn-warning text-white">
+          <a href="<?php echo base_url('SiswaController/edit/' . $siswa->id_siswa); ?>" class="btn btn-warning text-white">
             <i class="bi bi-pencil me-1"></i>
             Edit
           </a>
-          <a href="<?php echo base_url('siswacontroller/set_inactive/' . $siswa->id_siswa); ?>" 
+          <a href="<?php echo base_url('SiswaController/set_inactive/' . $siswa->id_siswa); ?>" 
              class="btn btn-secondary"
              onclick="return confirm('Apakah Anda yakin ingin menonaktifkan siswa ini?')">
             <i class="bi bi-pause-circle me-1"></i>

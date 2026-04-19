@@ -22,13 +22,13 @@
           </p>
         </div>
         <div class="d-flex gap-2">
-          <a href="<?php echo base_url('siswacontroller/import'); ?>" class="btn btn-success">
+          <a href="<?php echo base_url('SiswaController/import'); ?>" class="btn btn-success">
             <i class="bi bi-upload me-1"></i> Import Excel
           </a>
-          <a href="<?php echo base_url('siswacontroller/inactive'); ?>" class="btn btn-outline-secondary">
+          <a href="<?php echo base_url('SiswaController/inactive'); ?>" class="btn btn-outline-secondary">
             <i class="bi bi-pause-circle me-1"></i> Siswa Tidak Aktif
           </a>
-          <a href="<?php echo base_url('siswacontroller/tambah'); ?>" class="btn btn-primary">
+          <a href="<?php echo base_url('SiswaController/tambah'); ?>" class="btn btn-primary">
             <i class="bi bi-plus-circle me-1"></i> Tambah Siswa
           </a>
         </div>
@@ -39,7 +39,7 @@
         <div class="col-md-12">
           <div class="card border-0 bg-light">
             <div class="card-body">
-              <form method="GET" action="<?php echo base_url('siswacontroller'); ?>" class="row g-3">
+              <form method="GET" action="<?php echo base_url('SiswaController'); ?>" class="row g-3">
                 <div class="col-md-3">
                   <label for="filter_kelas" class="form-label small">Filter Kelas</label>
                   <select class="form-select form-select-sm" name="filter_kelas" id="filter_kelas">
@@ -80,7 +80,7 @@
                   </div>
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
-                  <a href="<?php echo base_url('siswacontroller'); ?>" class="btn btn-sm btn-outline-secondary w-100">
+                  <a href="<?php echo base_url('SiswaController'); ?>" class="btn btn-sm btn-outline-secondary w-100">
                     <i class="bi bi-arrow-clockwise me-1"></i> Reset
                   </a>
                 </div>
@@ -146,20 +146,20 @@
                   </td>
                   <td class="text-center">
                     <div class="btn-group" role="group">
-                      <a href="<?php echo base_url('siswacontroller/detail/' . $row->id_siswa); ?>" 
+                      <a href="<?php echo base_url('SiswaController/detail/' . $row->id_siswa); ?>" 
                          class="btn btn-sm btn-info text-white" title="Detail">
                         <i class="bi bi-eye"></i>
                       </a>
-                      <a href="<?php echo base_url('siswacontroller/edit/' . $row->id_siswa); ?>" 
+                      <a href="<?php echo base_url('SiswaController/edit/' . $row->id_siswa); ?>" 
                          class="btn btn-sm btn-warning text-white" title="Edit">
                         <i class="bi bi-pencil"></i>
                       </a>
-                      <a href="<?php echo base_url('siswacontroller/set_inactive/' . $row->id_siswa); ?>" 
+                      <a href="<?php echo base_url('SiswaController/set_inactive/' . $row->id_siswa); ?>" 
                          class="btn btn-sm btn-secondary" title="Nonaktifkan"
                          onclick="return confirm('Apakah Anda yakin ingin menonaktifkan siswa ini?')">
                         <i class="bi bi-pause-circle"></i>
                       </a>
-                      <a href="<?php echo base_url('siswacontroller/hapus/' . $row->id_siswa); ?>" 
+                      <a href="<?php echo base_url('SiswaController/hapus/' . $row->id_siswa); ?>" 
                          class="btn btn-sm btn-danger" title="Hapus"
                          onclick="return confirm('Apakah Anda yakin ingin menghapus data siswa ini?')">
                         <i class="bi bi-trash"></i>

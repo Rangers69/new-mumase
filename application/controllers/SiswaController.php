@@ -125,7 +125,7 @@ class SiswaController extends MY_Controller {
         // Check if file was uploaded
         if (!isset($_FILES['excel_file']) || $_FILES['excel_file']['error'] != 0) {
             $this->session->set_flashdata('error', 'File tidak berhasil diupload. Silakan coba lagi.');
-            redirect('siswacontroller/import');
+            redirect('SiswaController/import');
         }
         
         $file = $_FILES['excel_file'];
@@ -136,13 +136,13 @@ class SiswaController extends MY_Controller {
         
         if (!in_array($file_ext, $allowed_extensions)) {
             $this->session->set_flashdata('error', 'Format file tidak diizinkan. Gunakan file .csv');
-            redirect('siswacontroller/import');
+            redirect('SiswaController/import');
         }
         
         // Check file size (max 5MB)
         if ($file['size'] > 5 * 1024 * 1024) {
             $this->session->set_flashdata('error', 'Ukuran file terlalu besar. Maksimal 5MB.');
-            redirect('siswacontroller/import');
+            redirect('SiswaController/import');
         }
         
         try {
@@ -152,14 +152,14 @@ class SiswaController extends MY_Controller {
             
             if ($handle === FALSE) {
                 $this->session->set_flashdata('error', 'Tidak dapat membuka file CSV.');
-                redirect('siswacontroller/import');
+                redirect('SiswaController/import');
             }
             
             // Read headers
             $headers = fgetcsv($handle, 1000, ',');
             if ($headers === FALSE) {
                 $this->session->set_flashdata('error', 'File CSV kosong atau tidak valid.');
-                redirect('siswacontroller/import');
+                redirect('SiswaController/import');
             }
             
             // Validate headers
@@ -169,7 +169,7 @@ class SiswaController extends MY_Controller {
             if ($actual_headers !== $expected_headers) {
                 $this->session->set_flashdata('error', 'Format header tidak sesuai. Silakan download template yang disediakan.');
                 fclose($handle);
-                redirect('siswacontroller/import');
+                redirect('SiswaController/import');
             }
             
             $import_data = [];
@@ -243,7 +243,7 @@ class SiswaController extends MY_Controller {
             
             if (!empty($errors)) {
                 $this->session->set_flashdata('error', 'Error validasi: ' . implode('<br>', array_slice($errors, 0, 10)));
-                redirect('siswacontroller/import');
+                redirect('SiswaController/import');
             }
             
             // Import data
@@ -318,7 +318,7 @@ class SiswaController extends MY_Controller {
             $this->session->set_flashdata('error', 'Error processing file: ' . $e->getMessage());
         }
         
-        redirect('siswacontroller/import');
+        redirect('SiswaController/import');
     }
 
     // Proses tambah siswa
@@ -341,7 +341,7 @@ class SiswaController extends MY_Controller {
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('siswacontroller/tambah');
+            redirect('SiswaController/tambah');
         } else {
             $data = array(
                 'nama_siswa' => $this->input->post('nama_siswa', true),
@@ -363,10 +363,10 @@ class SiswaController extends MY_Controller {
             
             if ($result) {
                 $this->session->set_flashdata('success', 'Data siswa berhasil ditambahkan');
-                redirect('siswacontroller');
+                redirect('SiswaController');
             } else {
                 $this->session->set_flashdata('error', 'Data siswa gagal ditambahkan');
-                redirect('siswacontroller/tambah');
+                redirect('SiswaController/tambah');
             }
         }
     }
@@ -415,7 +415,7 @@ class SiswaController extends MY_Controller {
         
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('error', validation_errors());
-            redirect('siswacontroller/edit/' . $id);
+            redirect('SiswaController/edit/' . $id);
         } else {
             $data = array(
                 'nama_siswa' => $this->input->post('nama_siswa', true),
@@ -436,10 +436,10 @@ class SiswaController extends MY_Controller {
             
             if ($result) {
                 $this->session->set_flashdata('success', 'Data siswa berhasil diperbarui');
-                redirect('siswacontroller');
+                redirect('SiswaController');
             } else {
                 $this->session->set_flashdata('error', 'Data siswa gagal diperbarui');
-                redirect('siswacontroller/edit/' . $id);
+                redirect('SiswaController/edit/' . $id);
             }
         }
     }
@@ -507,7 +507,7 @@ class SiswaController extends MY_Controller {
             $this->session->set_flashdata('error', 'Data siswa gagal dinonaktifkan');
         }
         
-        redirect('siswacontroller');
+        redirect('SiswaController');
     }
 
     // Aktifkan kembali siswa
@@ -521,7 +521,7 @@ class SiswaController extends MY_Controller {
             $this->session->set_flashdata('error', 'Data siswa gagal diaktifkan kembali');
         }
         
-        redirect('siswacontroller/inactive');
+        redirect('SiswaController/inactive');
     }
 
     // Hapus siswa
@@ -535,6 +535,6 @@ class SiswaController extends MY_Controller {
             $this->session->set_flashdata('error', 'Data siswa gagal dihapus');
         }
         
-        redirect('siswacontroller');
+        redirect('SiswaController');
     }
 }

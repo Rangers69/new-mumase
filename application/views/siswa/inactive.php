@@ -41,7 +41,7 @@
           </p>
         </div>
 
-        <a href="<?php echo base_url('siswacontroller'); ?>" class="btn btn-secondary">
+        <a href="<?php echo base_url('SiswaController'); ?>" class="btn btn-secondary">
           <i class="bi bi-arrow-left"></i> Kembali ke Siswa Aktif
         </a>
       </div>
@@ -69,18 +69,18 @@
                   </div>
 
                   <div class="d-flex justify-content-center gap-2 flex-wrap">
-                    <a href="<?php echo base_url('siswacontroller/detail/' . $row->id_siswa); ?>" class="btn btn-info btn-sm text-white">
+                    <a href="<?php echo base_url('SiswaController/detail/' . $row->id_siswa); ?>" class="btn btn-info btn-sm text-white">
                       <i class="bi bi-eye"></i> Detail
                     </a>
-                    <a href="<?php echo base_url('siswacontroller/edit/' . $row->id_siswa); ?>" class="btn btn-warning btn-sm text-white">
+                    <a href="<?php echo base_url('SiswaController/edit/' . $row->id_siswa); ?>" class="btn btn-warning btn-sm text-white">
                       <i class="bi bi-pencil"></i> Edit
                     </a>
-                    <a href="<?php echo base_url('siswacontroller/activate/' . $row->id_siswa); ?>" 
+                    <a href="<?php echo base_url('SiswaController/activate/' . $row->id_siswa); ?>" 
                        class="btn btn-success btn-sm"
                        onclick="return confirm('Apakah Anda yakin ingin mengaktifkan kembali siswa ini?')">
                       <i class="bi bi-play-circle"></i> Aktifkan
                     </a>
-                    <a href="<?php echo base_url('siswacontroller/hapus/' . $row->id_siswa); ?>" 
+                    <a href="<?php echo base_url('SiswaController/hapus/' . $row->id_siswa); ?>" 
                        class="btn btn-danger btn-sm"
                        onclick="return confirm('Apakah Anda yakin ingin menghapus data siswa ini?')">
                       <i class="bi bi-trash"></i> Hapus

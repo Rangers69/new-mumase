@@ -5,7 +5,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?php echo base_url('admin'); ?>">Home</a></li>
       <li class="breadcrumb-item">Master Data</li>
-      <li class="breadcrumb-item"><a href="<?php echo base_url('siswacontroller'); ?>">Siswa</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo base_url('SiswaController'); ?>">Siswa</a></li>
       <li class="breadcrumb-item active">Tambah</li>
     </ol>
   </nav>
@@ -42,7 +42,7 @@
       <?php endif; ?>
 
       <!-- Form -->
-      <form action="<?php echo base_url('siswacontroller/proses_tambah'); ?>" method="post" role="form">
+      <form action="<?php echo base_url('SiswaController/proses_tambah'); ?>" method="post" role="form">
         <div class="row">
           <!-- Informasi Personal -->
           <div class="col-lg-6 mb-4">
@@ -264,7 +264,7 @@
           <!-- Submit Buttons -->
           <div class="col-lg-12">
             <div class="d-flex justify-content-end gap-2">
-              <a href="<?php echo base_url('siswacontroller'); ?>" class="btn btn-secondary">
+              <a href="<?php echo base_url('SiswaController'); ?>" class="btn btn-secondary">
                 <i class="bi bi-arrow-left me-1"></i>
                 Batal
               </a>

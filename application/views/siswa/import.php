@@ -5,7 +5,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?php echo base_url('admin'); ?>">Home</a></li>
       <li class="breadcrumb-item">Master Data</li>
-      <li class="breadcrumb-item"><a href="<?php echo base_url('siswacontroller'); ?>">Siswa</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo base_url('SiswaController'); ?>">Siswa</a></li>
       <li class="breadcrumb-item active">Import</li>
     </ol>
   </nav>
@@ -67,7 +67,7 @@
                     Download template CSV untuk format import data yang benar.
                   </p>
                 </div>
-                <a href="<?php echo base_url('siswacontroller/download_template'); ?>" class="btn btn-primary">
+                <a href="<?php echo base_url('SiswaController/download_template'); ?>" class="btn btn-primary">
                   <i class="bi bi-download me-1"></i> Download Template
                 </a>
               </div>
@@ -86,7 +86,7 @@
               </h6>
             </div>
             <div class="card-body">
-              <form action="<?php echo base_url('siswacontroller/proses_import'); ?>" method="post" enctype="multipart/form-data">
+              <form action="<?php echo base_url('SiswaController/proses_import'); ?>" method="post" enctype="multipart/form-data">
                 <div class="row">
                   <div class="col-md-8">
                     <div class="mb-3">
