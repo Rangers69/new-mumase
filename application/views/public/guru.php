@@ -32,7 +32,7 @@
             <div class="team-member text-center">
               <div class="member-img">
                 <img 
-                  src="<?php echo base_url('assets/img/guru/' . (!empty($row->foto_guru) ? $row->foto_guru : 'default.jpg')); ?>" 
+                  src="<?php echo base_url('assets/img/guru/' . (!empty($row->foto_guru) ? $row->foto_guru : 'user.png')); ?>" 
                   alt="<?php echo $row->nama_guru; ?>" 
                   class="img-fluid rounded-circle"
                   style="width: 200px; height: 200px; object-fit: cover; border: 4px solid #f8f9fa;"
@@ -40,7 +40,7 @@
               </div>
               <div class="member-info">
                 <h4><?php echo $row->nama_guru; ?></h4>
-                <span><?php echo $row->nama_mapel; ?></span>
+                <span class="text-primary fw-semibold"><?php echo $row->nama_mapel; ?></span>
                 <div class="social">
                   <?php if (!empty($row->email)): ?>
                     <a href="mailto:<?php echo $row->email; ?>" title="Email">
