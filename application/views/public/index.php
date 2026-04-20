@@ -132,7 +132,7 @@
     </div>
 
     <div class="text-center mt-5">
-      <a href="<?php echo base_url('news'); ?>" class="btn btn-primary px-4">
+      <a href="<?php echo base_url('news/list'); ?>" class="btn btn-primary px-4">
         Lihat Semua Berita
       </a>
     </div>

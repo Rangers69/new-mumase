@@ -28,7 +28,7 @@
 
           <!-- Filter Section -->
             <div class="container mb-4">
-              <form action="<?php echo base_url('news'); ?>" method="get">
+              <form action="<?php echo base_url('news/list'); ?>" method="get">
                   <div class="row g-3">
 
                       <!-- Kategori -->
@@ -66,7 +66,7 @@
                               <i class="bi bi-search me-1"></i> Filter
                           </button>
 
-                          <a href="<?php echo base_url('news'); ?>" class="btn btn-outline-secondary">
+                          <a href="<?php echo base_url('news/list'); ?>" class="btn btn-outline-secondary">
                               <i class="bi bi-x-circle me-1"></i> Reset
                           </a>
                       </div>
@@ -166,7 +166,7 @@
               <?php if (!empty($categories)): ?>
                 <?php foreach ($categories as $category): ?>
                   <li>
-                    <a href="<?php echo base_url('news?filter_category=' . urlencode($category->slug)); ?>">
+                    <a href="<?php echo base_url('news/list?filter_category=' . urlencode($category->slug)); ?>">
                       <?php echo htmlspecialchars($category->name); ?>
                       <span>(<?php echo $category->news_count ?? 0; ?>)</span>
                     </a>

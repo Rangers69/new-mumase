@@ -14,13 +14,14 @@ class MY_Controller extends CI_Controller
         $current_method     = $this->router->fetch_method();
 
         // controller yang tidak perlu login
-        $allowed_controller = ['auth', 'welcome', 'GuruController'];
+        $allowed_controller = ['auth', 'welcome', 'GuruController','NewsController'];
 
         // method tertentu yang boleh diakses tanpa login
         $allowed_method = [
             'auth' => ['login', 'proses_login', 'logout'],
             'welcome' => ['index'],
-            'GuruController' => ['public_view']
+            'GuruController' => ['public_view'],
+            'NewsController' => ['public_index', 'public_detail']
         ];
 
         if (in_array($current_controller, $allowed_controller)) {

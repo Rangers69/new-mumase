@@ -4,7 +4,7 @@
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Beranda</a></li>
-      <li class="breadcrumb-item"><a href="<?php echo base_url('news'); ?>">Berita</a></li>
+      <li class="breadcrumb-item"><a href="<?php echo base_url('news/list'); ?>">Berita</a></li>
       <li class="breadcrumb-item active"><?php echo htmlspecialchars($news->title); ?></li>
     </ol>
   </nav>
@@ -91,7 +91,7 @@
               <?php if (!empty($categories)): ?>
                 <?php foreach ($categories as $category): ?>
                   <li>
-                    <a href="<?php echo base_url('news?filter_category=' . urlencode($category->slug)); ?>">
+                    <a href="<?php echo base_url('news/list?filter_category=' . urlencode($category->slug)); ?>">
                       <?php echo htmlspecialchars($category->name); ?>
                       <span>(<?php echo $category->news_count ?? 0; ?>)</span>
                     </a>
