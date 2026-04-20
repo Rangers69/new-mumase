@@ -217,12 +217,12 @@ function is_active_group($segments = []) {
         </a>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link <?php echo is_active_page('pengaturan') ? 'active' : ''; ?>" href="#">
           <i class="bi bi-gear"></i>
           <span>Pengaturan</span>
         </a>
-      </li>
+      </li> -->
 
     </ul>
 
