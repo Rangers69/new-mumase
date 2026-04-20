@@ -2752,3 +2752,9 @@ section {
   border: 2px solid #eaeaea; /* garis frame */
 }
 
+.ppdb {
+  background:#ffc107;
+  font-weight:bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
