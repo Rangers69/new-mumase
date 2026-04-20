@@ -14,6 +14,8 @@ class Welcome extends CI_Controller {
 		$this->load->model('Testimoni');
 		$this->load->model('Sarpras');
 		$this->load->model('Pimpinan');
+		$this->load->model('News');
+		$this->load->model('NewsCategory');
 	}
 	
 	public function index()
@@ -48,6 +50,8 @@ class Welcome extends CI_Controller {
 		// Get all pimpinan data
 		$data['pimpinan'] = $this->Pimpinan->get_all();
 
+		// Get latest news data (published only, limit 6)
+		$data['news'] = $this->News->get_latest_published(3);
 
 		$this->load->view('public/header', $data);
 		$this->load->view('public/index', $data);

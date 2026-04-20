@@ -53,6 +53,92 @@
   </section>
   <!-- End Hero Section -->
 
+  <!-- ======= Start News Section ======= -->
+<section id="news" class="blog sections-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-header">
+      <h2>Berita Terbaru</h2>
+      <p>
+        Informasi terbaru seputar kegiatan sekolah, prestasi siswa,
+        pengumuman, dan berita penting lainnya dari
+        SMK Muhammadiyah 15 Jakarta.
+      </p>
+    </div>
+
+    <div class="row gy-4 posts-list">
+
+      <?php if (!empty($news)) : ?>
+        <?php foreach ($news as $row) : ?>
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <?php if (!empty($row->thumbnail)) : ?>
+                  <img src="assets/img/<?php echo $row->thumbnail; ?>" alt="" class="img-fluid">
+                <?php else : ?>
+                  <img src="assets/img/blog-placeholder.jpg" alt="" class="img-fluid">
+                <?php endif; ?>
+              </div>
+
+              <p class="post-category">
+                <?php echo $row->category_name ?? 'News'; ?>
+              </p>
+
+              <h2 class="title">
+                <a href="<?php echo base_url('news/detail/' . $row->slug); ?>">
+                  <?php echo $row->title; ?>
+                </a>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <div class="post-meta">
+
+                  <p class="post-date">
+                    <time datetime="<?php echo date('Y-m-d', strtotime($row->published_at)); ?>">
+                      <?php echo date('d M Y', strtotime($row->published_at)); ?>
+                    </time>
+                  </p>
+                </div>
+              </div>
+
+              <p class="mt-3">
+                <?php echo substr(strip_tags($row->short_description), 0, 120); ?>
+              </p>
+
+              <a href="<?php echo base_url('news/detail/' . $row->slug); ?>" class="readmore stretched-link">
+                Baca Selengkapnya
+                <i class="bi bi-arrow-right"></i>
+              </a>
+
+            </article>
+          </div>
+
+        <?php endforeach; ?>
+      <?php else : ?>
+
+        <div class="col-12 text-center">
+          <div class="alert alert-light border">
+            <i class="bi bi-newspaper fs-3 d-block mb-2"></i>
+            Belum ada berita terbaru.
+          </div>
+        </div>
+
+      <?php endif; ?>
+
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="<?php echo base_url('news'); ?>" class="btn btn-primary px-4">
+        Lihat Semua Berita
+      </a>
+    </div>
+
+  </div>
+</section>
+<!-- ======= End News Section ======= -->
+
   <!-- ======= Start Main Section ======= -->
   <main id="main">
     <!-- ======= About Us Section ======= -->

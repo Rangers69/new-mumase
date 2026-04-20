@@ -177,3 +177,13 @@ $route['jadwal/activate/(:num)'] = 'JadwalController/activate/$1';
 $route['jadwal/hapus/(:num)'] = 'JadwalController/hapus/$1';
 $route['jadwal/inactive'] = 'JadwalController/inactive';
 
+
+$route['news'] = 'NewsController/public_index';
+$route['news/create'] = 'NewsController/create';
+$route['news/store'] = 'NewsController/store';
+$route['news/edit/(:num)'] = 'NewsController/edit/$1';
+$route['news/update/(:num)'] = 'NewsController/update/$1';
+$route['news/delete/(:num)'] = 'NewsController/delete/$1';
+$route['news/detail/(:num)'] = 'NewsController/detail/$1';
+$route['news/show/(:num)'] = 'NewsController/show/$1';
+$route['news/detail/(:any)'] = 'NewsController/public_detail/$1';

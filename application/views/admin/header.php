@@ -211,6 +211,13 @@ function is_active_group($segments = []) {
       </li>
 
       <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('news') ? 'active' : ''; ?>" href="<?php echo base_url('news'); ?>">
+          <i class="bi bi-newspaper"></i>
+          <span>Berita</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link <?php echo is_active_page('pengaturan') ? 'active' : ''; ?>" href="#">
           <i class="bi bi-gear"></i>
           <span>Pengaturan</span>
