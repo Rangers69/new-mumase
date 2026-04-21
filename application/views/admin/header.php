@@ -17,17 +17,7 @@ function is_active_group($segments = []) {
     }
     return false;
 }
-
-
-// Helper role access
-function has_access($user_role, $allowed_roles = [])
-{
-    return in_array(strtolower($user_role), array_map('strtolower', $allowed_roles));
-}
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -105,128 +95,134 @@ function has_access($user_role, $allowed_roles = [])
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
-    <?php $jabatan = isset($user['jabatan_user']) ? strtolower($user['jabatan_user']) : ''; ?>
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <?php if (has_access($jabatan, ['admin'])): ?>
-        <li class="nav-item">
-          <a class="nav-link <?php echo is_active_page('admin') ? 'active' : ''; ?>" href="<?php echo base_url('admin'); ?>">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
-      <?php endif; ?>
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('admin') ? 'active' : ''; ?>" href="<?php echo base_url('admin'); ?>">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
 
-      <?php if (has_access($jabatan, ['admin', 'kurikulum'])): ?>
-        <li class="nav-item">
-          <a class="nav-link collapsed <?php echo is_active_group(['guru', 'guru/inactive', 'guru/active']) ? 'active' : ''; ?>" data-bs-target="#guru-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-people"></i><span>Guru</span>
-            <i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="guru-nav" class="nav-content collapse <?php echo is_active_group(['guru', 'guru/inactive', 'guru/active']) ? 'show' : ''; ?>" data-bs-parent="#sidebar-nav">
-            <li>
-              <a class="nav-link <?php echo is_active_page('guru/active') ? 'active' : ''; ?>" href="<?php echo base_url('guru/active'); ?>">
-                <i class="bi bi-person-check"></i><span>Guru Aktif</span>
-              </a>
-            </li>
-            <li>
-              <a class="nav-link <?php echo is_active_page('guru/inactive') ? 'active' : ''; ?>" href="<?php echo base_url('guru/inactive'); ?>">
-                <i class="bi bi-person-x"></i><span>Guru Tidak Aktif</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      <?php endif; ?>
+      <li class="nav-item">
+        <a class="nav-link collapsed <?php echo is_active_group(['guru', 'guru/inactive']) ? 'active' : ''; ?>" data-bs-target="#guru-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-people"></i><span>Guru</span>
+          <i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="guru-nav" class="nav-content collapse <?php echo is_active_group(['guru', 'guru/inactive']) ? 'show' : ''; ?>" data-bs-parent="#sidebar-nav">
+          <li>
+            <a class="nav-link <?php echo is_active_page('guru/active') ? 'active' : ''; ?>" href="<?php echo base_url('guru/active'); ?>">
+              <i class="bi bi-person-check"></i><span>Guru Aktif</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link <?php echo is_active_page('guru/inactive') ? 'active' : ''; ?>" href="<?php echo base_url('guru/inactive'); ?>">
+              <i class="bi bi-person-x"></i><span>Guru Tidak Aktif</span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
-      <?php if (has_access($jabatan, ['admin', 'kurikulum'])): ?>
-        <li class="nav-item">
-          <a class="nav-link collapsed <?php echo (is_active_page('mapel') || is_active_page('jadwal') || is_active_page('siswa')) ? 'active' : ''; ?>" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-text"></i><span>Akademik</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="forms-nav" class="nav-content collapse <?php echo (is_active_page('mapel') || is_active_page('jadwal') || is_active_page('siswa')) ? 'show' : ''; ?>" data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="<?php echo base_url('jadwal'); ?>" class="<?php echo is_active_page('jadwal') ? 'active' : ''; ?>">
-                <i class="bi bi-circle"></i><span>Jadwal Pelajaran</span>
-              </a>
-            </li>
-            <li>
-              <a href="<?php echo base_url('siswa'); ?>" class="<?php echo is_active_page('siswa') ? 'active' : ''; ?>">
-                <i class="bi bi-circle"></i><span>Siswa</span>
-              </a>
-            </li>
-            <li>
-              <a href="<?php echo base_url('mapel'); ?>" class="<?php echo is_active_page('mapel') ? 'active' : ''; ?>">
-                <i class="bi bi-circle"></i><span>Mapel</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      <?php endif; ?>
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('program') ? 'active' : ''; ?>" href="<?php echo base_url('program'); ?>">
+          <i class="bi bi-book"></i>
+          <span>Program</span>
+        </a>
+      </li>
 
-      <?php if (has_access($jabatan, ['admin'])): ?>
-        <li class="nav-item">
-          <a class="nav-link <?php echo is_active_page('sarpras') ? 'active' : ''; ?>" href="<?php echo base_url('sarpras'); ?>">
-            <i class="bi bi-building"></i>
-            <span>Sarana Prasarana</span>
-          </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed <?php echo (is_active_page('mapel') || is_active_page('jadwal') || is_active_page('siswa')) ? 'active' : ''; ?>" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Akademik</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse <?php echo (is_active_page('mapel') || is_active_page('jadwal') || is_active_page('siswa')) ? 'show' : ''; ?>" data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="<?php echo base_url('jadwal'); ?>" class="<?php echo is_active_page('jadwal') ? 'active' : ''; ?>">
+              <i class="bi bi-circle"></i><span>Jadwal Pelajaran</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo base_url('siswa'); ?>" class="<?php echo is_active_page('siswa') ? 'active' : ''; ?>">
+              <i class="bi bi-circle"></i><span>Siswa</span>
+            </a>
+          </li>
+          <li>
+            <a href="<?php echo base_url('mapel'); ?>" class="<?php echo is_active_page('mapel') ? 'active' : ''; ?>">
+              <i class="bi bi-circle"></i><span>Mapel</span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
-        <li class="nav-item">
-          <a class="nav-link <?php echo is_active_page('testimoni') ? 'active' : ''; ?>" href="<?php echo base_url('testimoni'); ?>">
-            <i class="bi bi-chat-quote"></i>
-            <span>Testimoni</span>
-          </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('sarpras') ? 'active' : ''; ?>" href="<?php echo base_url('sarpras'); ?>">
+          <i class="bi bi-building"></i>
+          <span>Sarana Prasarana</span>
+        </a>
+      </li>
 
-        <li class="nav-item">
-          <a class="nav-link <?php echo is_active_page('pimpinan') ? 'active' : ''; ?>" href="<?php echo base_url('pimpinan'); ?>">
-            <i class="bi bi-person-badge"></i>
-            <span>Pimpinan</span>
-          </a>
-        </li>
-      <?php endif; ?>
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('testimoni') ? 'active' : ''; ?>" href="<?php echo base_url('testimoni'); ?>">
+          <i class="bi bi-chat-quote"></i>
+          <span>Testimoni</span>
+        </a>
+      </li>
 
-      <?php if (has_access($jabatan, ['admin', 'kurikulum'])): ?>
-        <li class="nav-item">
-          <a class="nav-link <?php echo is_active_page('program') ? 'active' : ''; ?>" href="<?php echo base_url('program'); ?>">
-            <i class="bi bi-book"></i>
-            <span>Program</span>
-          </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('pimpinan') ? 'active' : ''; ?>" href="<?php echo base_url('pimpinan'); ?>">
+          <i class="bi bi-person-badge"></i>
+          <span>Pimpinan</span>
+        </a>
+      </li>
 
-        <li class="nav-item">
-          <a class="nav-link <?php echo is_active_page('jurusan') ? 'active' : ''; ?>" href="<?php echo base_url('jurusan'); ?>">
-            <i class="bi bi-mortarboard"></i>
-            <span>Jurusan</span>
-          </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('program') ? 'active' : ''; ?>" href="<?php echo base_url('program'); ?>">
+          <i class="bi bi-book"></i>
+          <span>Program</span>
+        </a>
+      </li>
 
-        <li class="nav-item">
-          <a class="nav-link <?php echo is_active_page('statistik') ? 'active' : ''; ?>" href="<?php echo base_url('statistik'); ?>">
-            <i class="bi bi-bar-chart"></i>
-            <span>Statistik</span>
-          </a>
-        </li>
-      <?php endif; ?>
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('jurusan') ? 'active' : ''; ?>" href="<?php echo base_url('jurusan'); ?>">
+          <i class="bi bi-mortarboard"></i>
+          <span>Jurusan</span>
+        </a>
+      </li>
 
-      <?php if (has_access($jabatan, ['admin'])): ?>
-        <li class="nav-item">
-          <a class="nav-link <?php echo is_active_page('partnership') ? 'active' : ''; ?>" href="<?php echo base_url('partnership'); ?>">
-            <i class="bi bi-link-45deg"></i>
-            <span>Partnership</span>
-          </a>
-        </li>
-      <?php endif; ?>
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('sarpras') ? 'active' : ''; ?>" href="<?php echo base_url('sarpras'); ?>">
+          <i class="bi bi-building"></i>
+          <span>Sarana Prasarana</span>
+        </a>
+      </li>
 
-      <?php if (has_access($jabatan, ['admin', 'ipm15', 'kurikulum'])): ?>
-        <li class="nav-item">
-          <a class="nav-link <?php echo is_active_page('news') ? 'active' : ''; ?>" href="<?php echo base_url('news'); ?>">
-            <i class="bi bi-newspaper"></i>
-            <span>Berita</span>
-          </a>
-        </li>
-      <?php endif; ?>
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('partnership') ? 'active' : ''; ?>" href="<?php echo base_url('partnership'); ?>">
+          <i class="bi bi-link-45deg"></i>
+          <span>Partnership</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('statistik') ? 'active' : ''; ?>" href="<?php echo base_url('statistik'); ?>">
+          <i class="bi bi-bar-chart"></i>
+          <span>Statistik</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('news') ? 'active' : ''; ?>" href="<?php echo base_url('news'); ?>">
+          <i class="bi bi-newspaper"></i>
+          <span>Berita</span>
+        </a>
+      </li>
+
+      <!-- <li class="nav-item">
+        <a class="nav-link <?php echo is_active_page('pengaturan') ? 'active' : ''; ?>" href="#">
+          <i class="bi bi-gear"></i>
+          <span>Pengaturan</span>
+        </a>
+      </li> -->
 
     </ul>
 
