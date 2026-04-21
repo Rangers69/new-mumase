@@ -8,7 +8,7 @@
           <h2>Welcome to <span>SMK Muh 15 Jakarta</span></h2>
           <p>School of Bussiness Multimedia</p>
           <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="ppdb.php"  class="btn-get-started ppdb">PPDB</a>
+            <a href="https://forms.gle/2zSp4AXTURaiHLDy7"  class="btn-get-started ppdb">PPDB</a>
             <a href="https://www.youtube.com/watch?v=NE9qCuAOJdQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
         </div>
