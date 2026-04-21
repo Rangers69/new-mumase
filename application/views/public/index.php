@@ -674,8 +674,8 @@
               <div class="info-item d-flex">
                 <i class="bi bi-phone flex-shrink-0"></i>
                 <div>
-                  <h4>Telepon:</h4>
-                  <p>(021) 52920657</p>
+                  <h4>Whatsapp:</h4>
+                  <p>0819-5235-1515</p>
                 </div>
               </div>
               <!-- End Info Item -->
