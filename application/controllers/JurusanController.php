@@ -12,15 +12,6 @@ class JurusanController extends MY_Controller {
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->model('Jurusan');
-
-        $user = $this->session->userdata('user');
-        $jabatan = strtolower($user['jabatan_user'] ?? '');
-
-        $allowed = ['admin', 'kurikulum'];
-
-        if (!in_array($jabatan, $allowed)) {
-            show_error('Anda tidak memiliki akses ke halaman ini.', 403);
-        }
     }
 
     // Halaman utama jurusan - menampilkan daftar jurusan

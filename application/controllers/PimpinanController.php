@@ -12,15 +12,6 @@ class PimpinanController extends MY_Controller {
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->model('Pimpinan');
-
-        $user = $this->session->userdata('user');
-        $jabatan = strtolower($user['jabatan_user'] ?? '');
-
-        $allowed = ['admin'];
-
-        if (!in_array($jabatan, $allowed)) {
-            show_error('Anda tidak memiliki akses ke halaman ini.', 403);
-        }
     }
 
     // Halaman utama pimpinan - menampilkan daftar pimpinan
@@ -76,9 +67,6 @@ class PimpinanController extends MY_Controller {
         $this->load->view('admin/header', $data);
         $this->load->view('pimpinan/edit', $data);
         $this->load->view('admin/footer', $data);
-
-        
-
     }
 
     // Proses tambah pimpinan

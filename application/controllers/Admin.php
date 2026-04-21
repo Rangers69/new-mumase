@@ -14,13 +14,13 @@ class Admin extends MY_Controller {
             redirect('auth');
         }
         
-        $user = $this->session->userdata('user');
-        $jabatan = strtolower($user['jabatan_user'] ?? '');
+        // Check if user has admin role
+        $user_role = $this->session->userdata('jabatan_user');
 
-        $allowed = ['admin', 'kurikulum'];
 
-        if (!in_array($jabatan, $allowed)) {
-            show_error('Anda tidak memiliki akses ke halaman ini.', 403);
+        if ($user_role != 'Admin' && $user_role != 'SuperAdmin') {
+            $this->session->set_flashdata('error', 'Anda tidak memiliki akses ke halaman ini!');
+            redirect('auth');
         }
     }
 

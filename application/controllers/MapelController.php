@@ -10,15 +10,6 @@ class MapelController extends MY_Controller {
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->model('Mapel');
-
-        $user = $this->session->userdata('user');
-        $jabatan = strtolower($user['jabatan_user'] ?? '');
-
-        $allowed = ['admin', 'kurikulum'];
-
-        if (!in_array($jabatan, $allowed)) {
-            show_error('Anda tidak memiliki akses ke halaman ini.', 403);
-        }
     }
 
     // Halaman utama mapel - menampilkan daftar mata pelajaran

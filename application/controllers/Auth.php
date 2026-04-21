@@ -57,16 +57,8 @@ class Auth extends CI_Controller {
 				$this->User->update_last_login($user->id_user);
 				
 				// Redirect to dashboard or home page
-				if ($user->jabatan_user == 'Admin' || $user->jabatan_user == 'Kurikulum') {
-					$this->session->set_flashdata('success', 'Login berhasil! Selamat datang, ' . $user->nama);
-					redirect('admin');
-				} elseif ($user->jabatan_user == 'Ipm15') {
-					$this->session->set_flashdata('success', 'Login berhasil! Selamat datang, ' . $user->nama);
-					redirect('news');
-				} else {
-					$this->session->set_flashdata('error', 'Anda tidak memiliki akses ke halaman ini!');
-					redirect('auth');
-				}
+				$this->session->set_flashdata('success', 'Login berhasil! Selamat datang, ' . $user->nama);
+				redirect('admin');
 				
 			} else {
 				// Invalid credentials

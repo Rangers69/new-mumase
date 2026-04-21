@@ -10,16 +10,6 @@ class NewsController extends MY_Controller
         $this->load->model('NewsCategory');
         $this->load->helper(['url', 'text']);
         $this->load->library('form_validation');
-        $this->load->library('session');
-
-        $user = $this->session->userdata('user');
-        $jabatan = strtolower($user['jabatan_user'] ?? '');
-
-        $allowed = ['admin', 'kurikulum'];
-
-        if (!in_array($jabatan, $allowed)) {
-            show_error('Anda tidak memiliki akses ke halaman ini.', 403);
-        }
     }
 
     public function index()
