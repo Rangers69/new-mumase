@@ -83,7 +83,7 @@
                   <article class="news-card">
                     <div class="post-img">
                       <?php if (!empty($row->thumbnail)): ?>
-                        <img src="<?php echo base_url('assets/img/' . $row->thumbnail); ?>" alt="<?php echo htmlspecialchars($row->title); ?>" class="img-fluid">
+                        <img src="<?php echo base_url('assets/img/berita/' . $row->thumbnail); ?>" alt="<?php echo htmlspecialchars($row->title); ?>" class="img-fluid">
                       <?php else: ?>
                         <img src="<?php echo base_url('assets/img/blog-placeholder.jpg'); ?>" alt="<?php echo htmlspecialchars($row->title); ?>" class="img-fluid">
                       <?php endif; ?>
@@ -186,7 +186,7 @@
             <?php if (!empty($recent_news)): ?>
               <?php foreach ($recent_news as $recent): ?>
                 <div class="post-item clearfix">
-                  <img src="<?php echo !empty($recent->thumbnail) ? base_url('assets/img/' . $recent->thumbnail) : base_url('assets/img/blog-placeholder.jpg'); ?>" alt="" class="img-fluid">
+                  <img src="<?php echo !empty($recent->thumbnail) ? base_url('assets/img/berita/' . $recent->thumbnail) : base_url('assets/img/blog-placeholder.jpg'); ?>" alt="" class="img-fluid">
                   <h4>
                     <a href="<?php echo base_url('news/detail/' . $recent->slug); ?>">
                       <?php echo htmlspecialchars($recent->title); ?>

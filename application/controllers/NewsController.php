@@ -40,6 +40,24 @@ class NewsController extends MY_Controller
         $this->load->view('admin/footer', $data);
     }
 
+    // Function to handle thumbnail upload
+    private function upload_thumbnail() {
+        $config['upload_path'] = './assets/img/berita';
+        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $config['max_size'] = 2048; // 2MB in KB
+        $config['file_name'] = time() . '_' . $_FILES['thumbnail']['name'];
+        $config['overwrite'] = true;
+        
+        $this->load->library('upload', $config);
+        
+        if ($this->upload->do_upload('thumbnail')) {
+            $upload_data = $this->upload->data();
+            return $upload_data['file_name'];
+        } else {
+            return null; // Return null if upload fails
+        }
+    }
+
     public function store()
     {
         $this->form_validation->set_rules('category_id', 'Kategori', 'required');
@@ -59,7 +77,7 @@ class NewsController extends MY_Controller
             'category_id'       => $this->input->post('category_id', true),
             'title'             => $this->input->post('title', true),
             'slug'              => $this->input->post('slug', true),
-            'thumbnail'         => $this->input->post('thumbnail', true),
+            'thumbnail'         => $this->upload_thumbnail(),
             'short_description' => $this->input->post('short_description', true),
             'content'           => $this->input->post('content', false),
             'author'            => $this->input->post('author', true),
@@ -136,7 +154,7 @@ class NewsController extends MY_Controller
             'category_id'       => $this->input->post('category_id', true),
             'title'             => $this->input->post('title', true),
             'slug'              => $this->input->post('slug', true),
-            'thumbnail'         => $this->input->post('thumbnail', true),
+            'thumbnail'         => $this->upload_thumbnail(),
             'short_description' => $this->input->post('short_description', true),
             'content'           => $this->input->post('content', false),
             'author'            => $this->input->post('author', true),

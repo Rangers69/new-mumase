@@ -121,7 +121,7 @@
 
                   <td class="text-center">
                     <?php if (!empty($item->thumbnail)): ?>
-                      <img src="<?php echo base_url('assets/img/' . $item->thumbnail); ?>" alt="Thumbnail" class="img-thumbnail" style="max-width: 70px; max-height: 70px;">
+                      <img src="<?php echo base_url('assets/img/berita/' . $item->thumbnail); ?>" alt="Thumbnail" class="img-thumbnail" style="max-width: 70px; max-height: 70px;">
                     <?php else: ?>
                       <span class="text-muted small">No Image</span>
                     <?php endif; ?>

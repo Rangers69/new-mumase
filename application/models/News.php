@@ -88,7 +88,6 @@ class News extends CI_Model
         $this->db->from('news');
         $this->db->join('news_categories', 'news_categories.id = news.category_id', 'left');
         $this->db->where('news.status', 'published');
-        $this->db->where('news.published_at <=', date('Y-m-d H:i:s'));
         
         if ($exclude_id !== null) {
             $this->db->where('news.id !=', $exclude_id);

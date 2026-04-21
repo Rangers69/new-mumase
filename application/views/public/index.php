@@ -78,7 +78,7 @@
 
               <div class="post-img">
                 <?php if (!empty($row->thumbnail)) : ?>
-                  <img src="assets/img/<?php echo $row->thumbnail; ?>" alt="" class="img-fluid">
+                  <img src="assets/img/berita/<?php echo $row->thumbnail; ?>" alt="" class="img-fluid">
                 <?php else : ?>
                   <img src="assets/img/blog-placeholder.jpg" alt="" class="img-fluid">
                 <?php endif; ?>

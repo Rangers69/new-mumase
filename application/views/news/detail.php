@@ -56,7 +56,7 @@
                   <th width="150">Thumbnail</th>
                   <td>
                     <?php if (!empty($news->thumbnail)): ?>
-                      <img src="<?php echo base_url('assets/img/' . $news->thumbnail); ?>" alt="Thumbnail" class="img-fluid rounded" style="max-width: 200px;">
+                      <img src="<?php echo base_url('assets/img/berita/' . $news->thumbnail); ?>" alt="Thumbnail" class="img-fluid rounded" style="max-width: 200px;">
                     <?php else: ?>
                       <span class="text-muted">Tidak ada thumbnail</span>
                     <?php endif; ?>
