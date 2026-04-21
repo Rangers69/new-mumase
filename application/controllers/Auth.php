@@ -46,7 +46,7 @@ class Auth extends CI_Controller {
 				// Set session data for successful login
 				$session_data = array(
 					'user_id' => $user->id_user,
-					'username' => $user->nama_user,
+					'username' => $user->username_user,
 					'jabatan_user' => $user->jabatan_user,
 					'logged_in' => TRUE
 				);
