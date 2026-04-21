@@ -12,6 +12,15 @@ class TestimoniController extends MY_Controller {
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->model('Testimoni');
+
+        $user = $this->session->userdata('user');
+        $jabatan = strtolower($user['jabatan_user'] ?? '');
+
+        $allowed = ['admin'];
+
+        if (!in_array($jabatan, $allowed)) {
+            show_error('Anda tidak memiliki akses ke halaman ini.', 403);
+        }
     }
 
     // Halaman utama testimoni - menampilkan daftar testimoni
