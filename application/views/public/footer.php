@@ -48,7 +48,7 @@
             Jl. Karet Belakang Raya No.4,
             RT 10/RW 2, Karet Kuningan,
             Setiabudi, Jakarta Selatan<br />
-            <strong>Telepon:</strong> (021) 52920657<br />
+            <strong>Whatsapp:</strong> 0819-5235-1515 <br />
             <strong>Email:</strong> smkmuh15setiabudi@gmail.com
           </p>
         </div>
