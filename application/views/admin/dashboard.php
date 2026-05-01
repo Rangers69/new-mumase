@@ -130,7 +130,7 @@
                                 <div class="card-body">
                                     <h6 class="card-title">Siswa</h6>
                                     <p>Kelola data siswa</p>
-                                    <a href="#" class="btn btn-sm btn-light">
+                                    <a href="<?php echo base_url('siswa'); ?>" class="btn btn-sm btn-light">
                                         <i class="bi bi-mortarboard"></i> Kelola
                                     </a>
                                 </div>
@@ -139,10 +139,10 @@
                         <div class="col-md-4 mb-3">
                             <div class="card bg-warning text-white">
                                 <div class="card-body">
-                                    <h6 class="card-title">Laporan</h6>
-                                    <p>Lihat laporan</p>
-                                    <a href="#" class="btn btn-sm btn-light">
-                                        <i class="bi bi-file-text"></i> Lihat
+                                    <h6 class="card-title">Mata Pelajaran</h6>
+                                    <p>Kelola Mata Pelajaran</p>
+                                    <a href="<?php echo base_url('mapel'); ?>" class="btn btn-sm btn-light">
+                                        <i class="bi bi-file-text"></i> Kelola
                                     </a>
                                 </div>
                             </div>
