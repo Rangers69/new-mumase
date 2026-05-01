@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center align-items-center text-center px-4">
-          <div class="parallax-container hero-parallax" data-aos="zoom-out" data-aos-delay="100">
+          <div class="parallax-container hero-parallax"  style="background-image: url('<?php echo base_url("assets/img/hero-img3.png"); ?>');" data-aos="zoom-out" data-aos-delay="100">
             <div class="parallax-content">
               <!-- Content can be added here if needed -->
             </div>
