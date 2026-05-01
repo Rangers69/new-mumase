@@ -2765,7 +2765,7 @@ section {
   max-width: 520px;
   height: 360px;
   margin: 0 auto;
-  background-image: url("../img/hero-img3.png");
+  /* background-image: url("../img/hero-img3.png"); */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
