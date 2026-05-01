@@ -58,43 +58,39 @@
         <ul>
           <li><a href="<?php echo base_url(); ?>">Home</a></li>
           <li class="dropdown">
-            <a href="<?php echo base_url(); ?>#about"><span>Tentang Kami</span>
-              <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="<?php echo base_url(); ?>#about">Visi & Misi</a></li>
-              <li><a href="<?php echo base_url(); ?>#partnership">Partnership</a></li>
-              <li><a href="<?php echo base_url(); ?>#statistik">Statistik Sekolah</a></li>
-              <li><a href="<?php echo base_url(); ?>#sarpras">Sarana Prasarana</a></li>
-              <li><a href="<?php echo base_url('guru/public'); ?>">Guru</a></li>
-              <li><a href="<?php echo base_url(); ?>#news">Berita</a></li>
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><span>Tentang Kami</span></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="<?php echo base_url(); ?>#about">Visi & Misi</a></li>
+              <li><a class="dropdown-item" href="<?php echo base_url(); ?>#partnership">Partnership</a></li>
+              <li><a class="dropdown-item" href="<?php echo base_url(); ?>#statistik">Statistik Sekolah</a></li>
+              <li><a class="dropdown-item" href="<?php echo base_url(); ?>#sarpras">Sarana Prasarana</a></li>
+              <li><a class="dropdown-item" href="<?php echo base_url('guru/public'); ?>">Guru</a></li>
+              <li><a class="dropdown-item" href="<?php echo base_url(); ?>#news">Berita</a></li>
             </ul>
           </li>
           <li><a href="<?php echo base_url(); ?>#program">Program Unggulan</a></li>
           <li><a href="#pimpinan">Pimpinan</a></li>
           <li class="dropdown">
-            <a href="#"><span>Lainnya</span>
-              <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="jadwal-pelajaran.php">Jadwal Pelajaran</a></li>
-              <li><a href="jadwal-ujian.php">Jadwal Ujian</a></li>
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><span>Lainnya</span></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="jadwal-pelajaran.php">Jadwal Pelajaran</a></li>
+              <li><a class="dropdown-item" href="jadwal-ujian.php">Jadwal Ujian</a></li>
               <li class="dropdown">
-                <a href="#"><span>Kejuruan</span>
-                  <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">DKV</a></li>
-                  <li><a href="#">RPL</a></li>
+                <a href="#" class="dropdown-toggle dropdown-item" data-bs-toggle="dropdown"><span>Kejuruan</span></a>
+                <ul class="dropdown-menu dropdown-submenu">
+                  <li><a class="dropdown-item" href="#">DKV</a></li>
+                  <li><a class="dropdown-item" href="#">RPL</a></li>
                 </ul>
               </li>
               <li class="dropdown">
-                <a href="#"><span>Ekstrakurikuler</span>
-                  <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">PR IPM</a></li>
-                  <li><a href="#">Hizbul Wathon</a></li>
-                  <li><a href="#">Web Programming</a></li>
-                  <li><a href="#">Hadrah</a></li>
-                  <li><a href="#">Math Club</a></li>
-                  <li><a href="#">Bisnis Club</a></li>
+                <a href="#" class="dropdown-toggle dropdown-item" data-bs-toggle="dropdown"><span>Ekstrakurikuler</span></a>
+                <ul class="dropdown-menu dropdown-submenu">
+                  <li><a class="dropdown-item" href="#">PR IPM</a></li>
+                  <li><a class="dropdown-item" href="#">Hizbul Wathon</a></li>
+                  <li><a class="dropdown-item" href="#">Web Programming</a></li>
+                  <li><a class="dropdown-item" href="#">Hadrah</a></li>
+                  <li><a class="dropdown-item" href="#">Math Club</a></li>
+                  <li><a class="dropdown-item" href="#">Bisnis Club</a></li>
                 </ul>
               </li>
             </ul>
