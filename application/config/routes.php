@@ -188,3 +188,5 @@ $route['news/delete/(:num)'] = 'NewsController/delete/$1';
 $route['news/detail/(:num)'] = 'NewsController/detail/$1';
 $route['news/show/(:num)'] = 'NewsController/show/$1';
 $route['news/detail/(:any)'] = 'NewsController/public_detail/$1';
+
+$route['news/upload_image'] = 'NewsController/upload_image';

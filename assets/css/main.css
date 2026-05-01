@@ -2817,3 +2817,14 @@ section {
     border-radius: 12px;
   }
 }
+
+.news-content img,
+.blog-details .content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.ck-content img {
+    max-width: 100%;
+    height: auto;
+}

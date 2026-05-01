@@ -90,6 +90,43 @@ class NewsController extends MY_Controller
         redirect('news');
     }
 
+    public function upload_image()
+    {
+        if (empty($_FILES['upload']['name'])) {
+            echo json_encode([
+                'error' => [
+                    'message' => 'Tidak ada file yang diupload.'
+                ]
+            ]);
+            return;
+        }
+
+        $config['upload_path']   = './assets/img/news-content/';
+        $config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
+        $config['max_size']      = 2048;
+        $config['file_name']     = time() . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '_', $_FILES['upload']['name']);
+
+        if (!is_dir($config['upload_path'])) {
+            mkdir($config['upload_path'], 0777, true);
+        }
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('upload')) {
+            $uploadData = $this->upload->data();
+
+            echo json_encode([
+                'url' => base_url('assets/img/news-content/' . $uploadData['file_name'])
+            ]);
+        } else {
+            echo json_encode([
+                'error' => [
+                    'message' => strip_tags($this->upload->display_errors())
+                ]
+            ]);
+        }
+    }
+
     public function detail($id)
     {
         $data['title'] = 'Detail News';
@@ -154,7 +191,7 @@ class NewsController extends MY_Controller
             'category_id'       => $this->input->post('category_id', true),
             'title'             => $this->input->post('title', true),
             'slug'              => $this->input->post('slug', true),
-            'thumbnail'         => $this->upload_thumbnail(),
+            'thumbnail'         => $newThumbnail ? $newThumbnail : $news->thumbnail,
             'short_description' => $this->input->post('short_description', true),
             'content'           => $this->input->post('content', false),
             'author'            => $this->input->post('author', true),

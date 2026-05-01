@@ -146,8 +146,94 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
 <script>
+class MyUploadAdapter {
+    constructor(loader) {
+        this.loader = loader;
+    }
+
+    upload() {
+        return this.loader.file.then(file => {
+            const data = new FormData();
+            data.append('upload', file);
+
+            return fetch('<?php echo site_url("news/upload_image"); ?>', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.error) {
+                    alert(result.error.message);
+                    return Promise.reject(result.error.message);
+                }
+
+                return {
+                    default: result.url
+                };
+            });
+        });
+    }
+
+    abort() {}
+}
+
+function MyCustomUploadAdapterPlugin(editor) {
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+        return new MyUploadAdapter(loader);
+    };
+}
+
 ClassicEditor
-    .create(document.querySelector('#editor'))
+    .create(document.querySelector('#editor'), {
+        extraPlugins: [MyCustomUploadAdapterPlugin],
+        toolbar: [
+            'undo', 'redo',
+            '|', 'heading',
+            '|', 'bold', 'italic', 'link',
+            '|', 'imageUpload', 'insertTable', 'blockQuote',
+            '|', 'bulletedList', 'numberedList', 'outdent', 'indent'
+        ],
+        image: {
+            toolbar: [
+                'imageStyle:inline',
+                'imageStyle:block',
+                'imageStyle:side',
+                '|',
+                'resizeImage:25',
+                'resizeImage:50',
+                'resizeImage:75',
+                'resizeImage:original',
+                '|',
+                'toggleImageCaption',
+                'imageTextAlternative'
+            ],
+            resizeOptions: [
+                {
+                    name: 'resizeImage:original',
+                    label: 'Original',
+                    value: null
+                },
+                {
+                    name: 'resizeImage:25',
+                    label: '25%',
+                    value: '25'
+                },
+                {
+                    name: 'resizeImage:50',
+                    label: '50%',
+                    value: '50'
+                },
+                {
+                    name: 'resizeImage:75',
+                    label: '75%',
+                    value: '75'
+                }
+            ]
+        }
+    })
     .catch(error => {
         console.error(error);
     });
