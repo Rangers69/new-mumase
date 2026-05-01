@@ -2758,3 +2758,62 @@ section {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* FIX Hero Image Mobile Center */
+.hero .hero-parallax {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 360px;
+  margin: 0 auto;
+  background-image: url("../img/hero-img3.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.hero .hero-parallax::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,123,255,0.1), rgba(111,66,193,0.1));
+  border-radius: 15px;
+}
+
+.hero .parallax-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Tablet & HP */
+@media (max-width: 991px) {
+  .hero .order-1.order-lg-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero .hero-parallax {
+    width: 90%;
+    max-width: 340px;
+    height: 250px;
+    margin: 0 auto 25px auto;
+    background-position: center center;
+  }
+}
+
+/* HP kecil */
+@media (max-width: 576px) {
+  .hero .hero-parallax {
+    width: 88%;
+    max-width: 310px;
+    height: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+  }
+}

@@ -12,7 +12,7 @@
             <a href="https://www.youtube.com/watch?v=NE9qCuAOJdQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
           </div>
         </div>
-        <div class="col-lg-6 order-1 order-lg-2 text-center px-4">
+        <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center align-items-center text-center px-4">
           <div class="parallax-container hero-parallax" data-aos="zoom-out" data-aos-delay="100">
             <div class="parallax-content">
               <!-- Content can be added here if needed -->
@@ -726,61 +726,3 @@
     <!-- End Contact Section -->
   </main>
   <!-- End Main Section -->
-
-  <!-- Hero Parallax CSS -->
-  <style>
-    .hero-parallax {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background-image: url('assets/img/hero-img3.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    }
-
-    .hero-parallax::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(0,123,255,0.1), rgba(111,66,193,0.1));
-      border-radius: 15px;
-    }
-
-    .parallax-content {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .hero-parallax {
-        height: 300px;
-        background-attachment: scroll; /* Disable parallax on mobile for better performance */
-      }
-    }
-
-    @media (max-width: 576px) {
-      .hero-parallax {
-        height: 250px;
-        margin: 0 -15px;
-        border-radius: 0;
-      }
-    }
-
-    /* Smooth scroll behavior */
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
