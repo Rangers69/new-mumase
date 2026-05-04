@@ -17,7 +17,10 @@ class Admin extends MY_Controller {
         // Check if user has admin role
         $user_role = $this->session->userdata('jabatan_user');
 
-
+        if($user_role == 'Ipm15' || $user_role == 'Guru'){
+            redirect('news');
+        }
+       
         if ($user_role != 'Admin' && $user_role != 'SuperAdmin') {
             $this->session->set_flashdata('error', 'Anda tidak memiliki akses ke halaman ini!');
             redirect('auth');
