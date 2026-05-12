@@ -19,6 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
+   * Sidebar Toggle
+   */
+  const toggleSidebarBtn = document.querySelector('.toggle-sidebar-btn');
+  const sidebar = document.querySelector('#sidebar');
+  const body = document.body;
+
+  if (toggleSidebarBtn && sidebar) {
+    toggleSidebarBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      body.classList.toggle('toggle-sidebar');
+    });
+  }
+
+  /**
    * Sticky Header on Scroll
    */
   const selectHeader = document.querySelector('#header');

@@ -3,6 +3,7 @@
 
 function is_active_page($segment) {
     $CI =& get_instance();
+    $CI->load->helper('url');
     $current_url = trim($CI->uri->uri_string(), '/');
     $segment = trim($segment, '/');
 
@@ -65,10 +66,15 @@ function is_active_group($segments = []) {
     <div class="d-flex col-6">
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
+          <li class="nav-item">
+            <a class="nav-link nav-icon d-flex align-items-center toggle-sidebar-btn" href="#">
+              <i class="bi bi-list"></i>
+            </a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link nav-icon d-flex align-items-center" href="#" data-bs-toggle="dropdown">
               <i class="bi bi-person"></i>
-              <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $user['username']; ?></span>
+              <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo isset($user['username']) ? $user['username'] : 'User'; ?></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li>
