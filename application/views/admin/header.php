@@ -67,7 +67,7 @@ function is_active_group($segments = []) {
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
           <li class="nav-item">
-            <a class="nav-link nav-icon d-flex align-items-center toggle-sidebar-btn" href="<?php echo base_url(); ?>#">
+            <a class="nav-link nav-icon d-flex align-items-center toggle-sidebar-btn" href="javascript:void(0)">
               <i class="bi bi-list"></i>
             </a>
           </li>
