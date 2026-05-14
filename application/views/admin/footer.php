@@ -20,7 +20,7 @@
   <script src="<?php echo base_url('assets/vendor/php-email-form/validate.js'); ?>"></script>
 
   <!-- Template Main JS File -->
-  <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
+  <script src="<?php echo base_url('assets/js/main.js?v=1.1'); ?>"></script>
 
 </body>
 
@@ -31,4 +31,11 @@
     setTimeout(function() {
         window.location.href = "<?= base_url('auth/logout') ?>";
     }, sessionTimeout);
+
+
+    if (document.querySelector('.toggle-sidebar-btn')) {
+      document.querySelector('.toggle-sidebar-btn').onclick = function(e) {
+        document.querySelector('body').classList.toggle('toggle-sidebar');
+      }
+    }
 </script>
