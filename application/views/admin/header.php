@@ -42,11 +42,6 @@ function is_active_group($segments = []) {
   <!-- Vendor CSS Files -->
   <link href="<?php echo base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
   <link href="<?php echo base_url('assets/vendor/bootstrap-icons/bootstrap-icons.css'); ?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets/vendor/boxicons/css/boxicons.min.css'); ?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets/vendor/quill/quill.snow.css'); ?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets/vendor/quill/quill.bubble.css'); ?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets/vendor/remixicon/remixicon.css'); ?>" rel="stylesheet">
-  <link href="<?php echo base_url('assets/vendor/simple-datatables/style.css'); ?>" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
@@ -57,27 +52,23 @@ function is_active_group($segments = []) {
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <div class="d-flex col-6">
+    <div class="d-flex align-items-center justify-content-between">
       <a href="<?php echo base_url('admin'); ?>" class="logo d-flex align-items-center">
         <img src="<?php echo base_url('assets/img/logo-smk.png'); ?>" alt="">
         <span class="d-none d-lg-block">SMK Muh 15 Admin</span>
       </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
-    <div class="d-flex col-6">
-      <nav class="header-nav ms-auto">
-        <ul class="d-flex align-items-center">
-          <li class="nav-item">
-            <a class="nav-link nav-icon d-flex align-items-center toggle-sidebar-btn" href="javascript:void(0)">
-              <i class="bi bi-list"></i>
-            </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon d-flex align-items-center" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-person"></i>
-              <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo isset($user['username']) ? $user['username'] : 'User'; ?></span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-              <li>
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-person"></i>
+            <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo isset($user['username']) ? $user['username'] : 'User'; ?></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <i class="bi bi-person"></i>
                   <span>Profile</span>
@@ -92,11 +83,10 @@ function is_active_group($segments = []) {
                   <span>Logout</span>
                 </a>
               </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </div>
+          </ul>
+        </li>
+      </ul>
+    </nav>
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
