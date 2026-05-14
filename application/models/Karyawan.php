@@ -14,7 +14,7 @@ class Karyawan extends CI_Model {
     {
         $this->db->where('active', 1);
         $this->db->where('jabatan !=', '');
-        $this->db->order_by('nama_karyawan', 'ASC');
+        $this->db->order_by('id_karyawan', 'ASC');
         return $this->db->get('tb_karyawan')->result();
     }
 }
