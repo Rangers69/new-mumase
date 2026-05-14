@@ -64,7 +64,7 @@
               <li><a class="dropdown-item" href="<?php echo base_url(); ?>#partnership">Partnership</a></li>
               <li><a class="dropdown-item" href="<?php echo base_url(); ?>#statistik">Statistik Sekolah</a></li>
               <li><a class="dropdown-item" href="<?php echo base_url(); ?>#sarpras">Sarana Prasarana</a></li>
-              <li><a class="dropdown-item" href="<?php echo base_url('guru/public'); ?>">Guru</a></li>
+              <li><a class="dropdown-item" href="<?php echo base_url('guru-karyawan'); ?>">Guru & Staf</a></li>
               <li><a class="dropdown-item" href="<?php echo base_url(); ?>#news">Berita</a></li>
             </ul>
           </li>

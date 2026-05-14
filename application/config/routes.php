@@ -75,7 +75,7 @@ $route['guru/update'] = 'GuruController/proses_edit';
 $route['guru/inactive'] = 'GuruController/inactive';
 
 // Public Guru Routes
-$route['guru/public'] = 'GuruController/public_view';
+$route['guru-karyawan'] = 'GuruController/public_view';
 
 // Routes untuk Program
 $route['program'] = 'ProgramController';
