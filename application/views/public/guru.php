@@ -77,6 +77,75 @@
       <?php endif; ?>
     </div>
 
+    <!-- ======= Karyawan Section ======= -->
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <div class="section-header">
+          <h2 class="section-title">Staf Kependidikan</h2>
+          <p class="section-description">
+            Mengenal lebih dekat tim di balik layar yang mendukung operasional dan administrasi SMK Muhammadiyah 15 Jakarta.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <?php if (!empty($karyawan)): ?>
+        <?php foreach ($karyawan as $row): ?>
+          <div class="col-lg-3 col-md-6">
+            <div class="team-member text-center">
+              <div class="member-img">
+                <img 
+                  src="<?php echo base_url('assets/img/karyawan/' . (!empty($row->foto_karyawan) ? $row->foto_karyawan : 'user.png')); ?>" 
+                  alt="<?php echo $row->nama_karyawan; ?>" 
+                  class="img-fluid rounded-circle"
+                  style="width: 200px; height: 200px; object-fit: cover; border: 4px solid #f8f9fa;"
+                >
+              </div>
+              <div class="member-info">
+                <h4><?php echo $row->nama_karyawan; ?></h4>
+                <span class="text-primary fw-semibold"><?php echo $row->jabatan; ?></span>
+                <div class="social">
+                  <?php if (!empty($row->telepon)): ?>
+                    <a href="tel:<?php echo $row->telepon; ?>" title="Telepon">
+                      <i class="bi bi-telephone"></i>
+                    </a>
+                  <?php endif; ?>
+                </div>
+                <?php if (!empty($row->hobi)): ?>
+                  <p class="mt-2 small text-muted">
+                    <strong>Hobi:</strong> <?php echo $row->hobi; ?>
+                  </p>
+                <?php endif; ?>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <div class="col-12">
+          <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle"></i> 
+            <strong>Informasi:</strong> Data staf sedang dalam proses pembaruan.
+          </div>
+        </div>
+      <?php endif; ?>
+    </div>
+
+    <?php if (!empty($karyawan)): ?>
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="text-center">
+            <div class="stats-box" style="background: linear-gradient(135deg, #f0ad4e 0%, #d98e2b 100%);">
+              <h3>Total Staf</h3>
+              <div class="stats-number"><?php echo count($karyawan); ?></div>
+              <p class="stats-label">Karyawan & Staf Administrasi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php endif; ?>
+    <!-- ======= End Karyawan Section ======= -->
+
     <?php if (!empty($guru)): ?>
       <div class="row mt-5">
         <div class="col-12">

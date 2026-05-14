@@ -10,6 +10,7 @@ class GuruController extends MY_Controller {
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->model('Guru');
+        $this->load->model('Karyawan');
         $this->load->model('Mapel');
     }
 
@@ -290,6 +291,7 @@ class GuruController extends MY_Controller {
     public function public_view()
     {
         $data['guru'] = $this->Guru->get_all();
+        $data['karyawan'] = $this->Karyawan->get_all();
         $data['title'] = 'Data Guru - SMK Muhammadiyah 15 Jakarta';
         
         $this->load->view('public/header', $data);
